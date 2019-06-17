@@ -1,2 +1,2 @@
 # AWS-Serverless-Guides
-Awful official docs? Get your services set up faster with streamlined guides.
+Infrastructure guides for hosting secure, static sites on AWS.
