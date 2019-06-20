@@ -12,7 +12,10 @@
 aws s3 website s3://example.com --index-document index.html --error-document index.html
 ```
 
-# Get public-read policy and save it to home folder curl -o ~/aws-policies/s3-bucket-public-read.json --create-dirs https://raw.githubusercontent.com/GiantAgency/aws-policies/master/s3/s3bucket-public-read.json
+### Get public-read policy and save it to home folder
+```bash
+curl -o ~/aws-policies/s3-bucket-public-read.json --create-dirs https://raw.githubusercontent.com/spiritphyz/aws-policies/master/s3/s3-bucket-public-read.json
+```
 
 # Customize and create a local copy of the S3 public-read policy by renaming the bucket name to 'example.com' sed 's/YOURBUCKETNAME/example.com/g' ~/aws-policies/s3-bucket-public-read.json > s3.json
 
