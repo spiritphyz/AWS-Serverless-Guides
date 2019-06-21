@@ -1,5 +1,5 @@
-# AWS CLI cheatsheet
-Commands that plainly list the options for configuring Amazon Web Services without needing the web-based Management Console.
+# AWS CLI Cheatsheet
+Example commands that plainly list the fussy options needed for configuring Amazon Web Services without using the web-based Management Console.
 
 ## Requirements
  * CLI tools are installed
