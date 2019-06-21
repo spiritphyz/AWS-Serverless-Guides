@@ -1,4 +1,5 @@
-# CLI commands for making a bucket with a public-read policy and enabling Static Website Hosting
+# AWS CLI cheatsheet
+Commands that plainly list the options for configuring Amazon Web Services without needing the web-based Management Console.
 
 ## Requirements
  * CLI tools are installed
