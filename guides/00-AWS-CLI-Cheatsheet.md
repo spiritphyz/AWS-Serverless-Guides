@@ -21,7 +21,7 @@ Listed below are example CLI commands you can use for "copy, configure, paste". 
   ```
 
 ### 2. Enable "Static Website Hosting", set defaults for the "Index" and "Error" objects
-  * Replace "example.com" below to the name of your S3 bucket.
+  * Replace  the `example.com` bucket name
 ```bash
 aws s3 website s3://example.com --index-document index.html --error-document index.html
 ```
@@ -35,12 +35,13 @@ curl -o ~/aws-policies/s3-bucket-public-read.json --create-dirs https://raw.gith
 
 ### 4. Customize the policy the bucket name to 'example.com'
   * Duplicate the original policy as `s3.json`
-  * Replace the `example.com` bucket name references to your custom name.
+  * In the `sed` command below, customize the `example.com` bucket name
 ```bash
 sed 's/YOURBUCKETNAME/example.com/g' ~/aws-policies/s3-bucket-public-read.json > s3.json
 ```
 
 ### 5. Add bucket policy to S3
+  * Replace the `example.com` bucket name
 ```bash
 aws s3api put-bucket-policy --bucket example.com --policy file://s3.json
 ```
