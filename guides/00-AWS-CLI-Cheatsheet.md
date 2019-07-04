@@ -1,5 +1,5 @@
 # AWS CLI Cheatsheet
-Listed below are example CLI commands you can use for "copy, configure, paste". The commands plainly list the fussy options needed for configuring Amazon Web Services without using the web-based Management Console.
+Listed below are example CLI commands you can use to "copy, paste, configure, commit command". The examples plainly list the fussy options needed to quickly configure Amazon Web Services without using the web-based Management Console.
 
 ## Requirements
  * CLI tools are installed
@@ -7,11 +7,12 @@ Listed below are example CLI commands you can use for "copy, configure, paste". 
  * IAM keys are in your path
 
 ---
+
 # Create a new public bucket
 
 ### 1. Set public permissions, set region
   * You can't use `--region` by itself for regions not in `us-east-1`; you also need the `LocationConstraint` option.
-  * Replace `example.com` below to the name of your S3 bucket.
+  * Replace `example.com` below with the name of your S3 bucket.
   ```bash
   # For us-east-1
   aws s3api create-bucket --bucket example.com --acl public-read --region us-east-1
@@ -20,8 +21,9 @@ Listed below are example CLI commands you can use for "copy, configure, paste". 
   aws s3api create-bucket --bucket example.com --acl public-read --region us-west-1 --create-bucket-configuration LocationConstraint=us-west-1
   ```
 
-### 2. Enable "Static Website Hosting", set defaults for the "Index" and "Error" objects
-  * Replace  the `example.com` bucket name
+### 2. Enable Static Website Hosting, set defaults for the Index and Error objects
+  * If necessary, customize the target files for `index-document` and `error-document`
+  * Replace the `example.com` bucket name
 ```bash
 aws s3 website s3://example.com --index-document index.html --error-document index.html
 ```
