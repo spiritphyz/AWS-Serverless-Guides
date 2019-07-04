@@ -27,21 +27,22 @@ aws s3 website s3://example.com --index-document index.html --error-document ind
 ```
 
 ### 3. Get public-read policy and save it to home folder
-  * Downloading of the `.json` template only needs to be done once.
-  * The `.json` file will be will be saved to: `~/aws-policies/s3/`
+  * Downloading of the `.json` template only needs to be done once
+  * The master `.json` file will be will be saved to: `~/aws-policies/s3/`
 ```bash
 curl -o ~/aws-policies/s3-bucket-public-read.json --create-dirs https://raw.githubusercontent.com/spiritphyz/aws-policies/master/s3/s3-bucket-public-read.json
 ```
 
 ### 4. Customize the policy the bucket name to 'example.com'
-  * Duplicate the original policy as `s3.json`
-  * In the `sed` command below, customize the `example.com` bucket name
+  * We will duplicate the original master policy as a new file named `s3.json`
+  * In the `sed` command below, customize the `example.com` bucket name:
 ```bash
 sed 's/YOURBUCKETNAME/example.com/g' ~/aws-policies/s3-bucket-public-read.json > s3.json
 ```
 
 ### 5. Add bucket policy to S3
-  * Replace the `example.com` bucket name
+  * We will use the customized `s3.json` in Step 4 for the bucket permission rules
+  * Replace the `example.com` bucket name:
 ```bash
 aws s3api put-bucket-policy --bucket example.com --policy file://s3.json
 ```
