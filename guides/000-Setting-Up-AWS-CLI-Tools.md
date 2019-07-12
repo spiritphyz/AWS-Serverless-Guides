@@ -25,9 +25,9 @@ On macOS, edit the `.bash_profile` file in your home directory (`/Users/youruser
   4. Reload the environment variables
       * `source ~/.bash_profile`
 
-Check to see if the AWS tools are available everywhere:
+Lastly, run `aws --version` to verify that the AWS tools are available in any terminal directory. The result should look like:
 ```sh
-aws --version
+aws-cli/1.16.197 Python/3.7.3 Darwin/18.6.0 botocore/1.12.187
 ```
 
 # Resources
