@@ -2,7 +2,7 @@
 Listed below are example CLI commands you can use to "copy, paste, configure, commit command". The examples plainly list the fussy options needed to quickly configure Amazon Web Services without using the web-based Management Console.
 
 ## Requirements
- * CLI tools are installed
+ * [CLI tools are installed](./000-Setting-Up-AWS-CLI-Tools.md)
  * IAM identities are configured
  * IAM keys are in your path
 
