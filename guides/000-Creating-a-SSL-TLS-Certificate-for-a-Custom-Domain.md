@@ -19,7 +19,7 @@ When the domain's nameservers are set to Route 53's nameservers, we can then cre
 ## Creating a SSL certificate tied to a domain name
 Note: certificate requests time out after 72 hours if they can't be validated. Also, replace [ www.example.com ](https://www.example.com/) below with your new domain.
 
-1. Log into the AWS Management Console, search for Certificate Manager
+1. Log into the AWS Management Console, search for [ Certificate Manager ](https://console.aws.amazon.com/acm/home?region=us-east-1#/)
 2. "Request a certificate" button > "Request a public certificate" button
     * Domain name: [ www.example.com ](https://www.example.com/)
 3. "Add another name to this certificate" button >
