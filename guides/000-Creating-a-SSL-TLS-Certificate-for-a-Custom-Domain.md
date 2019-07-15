@@ -17,7 +17,7 @@ When a Record Set is made for a new Hosted Zone in Route 53, 4 NS records will b
 When the domain's nameservers are set to Route 53's nameservers, we can then create the certificate and succesfully validate the domain (by making CNAME records in Route 53).
 
 ## Creating a SSL certificate tied to a domain name
-Note: certificate requests time out after 72 hours if they can't be validated. Also, replace [ www.example.com ](https://www.example.com/) below with your new domain.
+Note: certificate requests time out after 72 hours if they can't be validated.
 
 1. In the AWS Management Console, search for [ Certificate Manager ](https://console.aws.amazon.com/acm/home?region=us-east-1#/)
 2. "Request a certificate" button > "Request a public certificate" button
@@ -29,7 +29,7 @@ example.com
 5. "Review" button > "Confirm and request" button > "Continue" button
     * If all DNS settings are managed by Route 53 (and not a custom domain manager like GoDaddy), you can click "Create record in Route 53" button for both domains
     * You should see a "Success" message for both domains
-    * It may take up to 30 minutes for the changes to propagate and for AWS to validate the domain.
+    * It may take up to 30 minutes for the changes to propagate and for AWS to validate the domain
     * The final status for each domain should be "Issued"
 
 ## Use the SSL certificate in CloudFront
@@ -48,18 +48,20 @@ It will take some time for your changes to propagate across all geographic regio
 
 ## Set "A Records" with aliases to CloudFront
 Before making the changes below, make sure the CloudFront distribution has a status of "Deployed".
-  1. Log into the AWS Management Console, search for Route 53
-  2. "Hosted zones" on left sidebar > www.example.com. > Enable checkbox for "www.example.com.", Type A > change settings on
+1. Log into the AWS Management Console, search for [Route 53](https://console.aws.amazon.com/route53/home?#)
+2. "Hosted zones" on left sidebar > www.example.com. > Enable checkbox for "www.example.com.", Type A > change settings on
 right sidebar
-Type: A - IPv4 address
-Alias: Yes
-Alias Target: Dropdown list should show your CloudFront distribution, so pick it "Save Record Set" button
-3. Repeat Step 2 with with the A Record for the bare domain: example.com
-To Do: rewrite this section for creating a Redirect S3 Bucket and Redirect CloudFront, then connecting "A" Record to Redirect CloudFront
-4.
-
+    * Type: A - IPv4 address
+    * Alias: Yes
+    * Alias Target: Dropdown list should show your CloudFront distribution, so pick it
+    * "Save Record Set" button
+3. ~~Repeat Step 2 with with the A Record for the bare domain: example.com~~
+TODO: rewrite this section for creating a Redirect S3 Bucket and Redirect CloudFront, then connecting "A" Record to Redirect CloudFront
 4. Check website in browser
-Make sure "http:/www./example.com" redirects to "https://www.example.com"
-Resources
-https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html https://medium.com/@brodartec/hosting-a-static-site-with-https-enabled-using-aws-s3-cloudfront-and-godaddy-826dae41fdc6
+    * Make sure "http:/www./example.com" redirects to "https://www.example.com"
+
+# Resources
+  * https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html
+  * https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html
+  * https://medium.com/@brodartec/hosting-a-static-site-with-https-enabled-using-aws-s3-cloudfront-and-godaddy-826dae41fdc6
 
