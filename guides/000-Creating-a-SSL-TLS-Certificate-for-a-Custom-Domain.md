@@ -58,7 +58,7 @@ right sidebar
 3. ~~Repeat Step 2 with with the A Record for the bare domain: example.com~~
 TODO: rewrite this section for creating a Redirect S3 Bucket and Redirect CloudFront, then connecting "A" Record to Redirect CloudFront
 4. Check website in browser
-    * Make sure "http:/www./example.com" redirects to "https://www.example.com"
+    * Make sure the the insecure domain "http://www.example.com" redirects to "[**https**://www.example.com](https://www.example.com)"
 
 # Resources
   * https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html
