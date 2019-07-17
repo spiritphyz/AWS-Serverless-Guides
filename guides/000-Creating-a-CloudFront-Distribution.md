@@ -9,8 +9,8 @@ We will use an S3 bucket as the origin location for our content. S3 buckets can 
 ### Standard Behaviors
 We will set up typical features for faster content delivery and standardize the domain behavior for search engine indexing:
   * Enable GZIP for network transfers
-  * Make the apex domain `example.com` be redirected to the fully qualified domain `www.example.com`
-  * Redirect the insecure `http://example.com` protocol to the secure `https://www.example.com`
+  * Make the apex domain `example.com` redirect to the fully qualified domain `www.example.com`
+  * Redirect the insecure protocol `http://example.com` to the secure `https://www.example.com`
 
 ## Creating a Distribution
 1. Log into the AWS Management Console and search for [ CloudFront ](https://console.aws.amazon.com/cloudfront/home?#)
@@ -34,6 +34,8 @@ We will set up typical features for faster content delivery and standardize the 
 10. Click "Create Distribution" button
 
 ## Customizing Error Pages
+TODO: rewrite this section to capture 404 and 500 error codes
+
 We want to respond to any 4xx responses from our S3 bucket with index.html and a 200 status code. We are trying to avoid 4xx responses that may be blocked by certain corporate firewalls and proxies, which tend to block 4xx and 5xx responses.
 1. Click on the ID on the newly created distribution (origin should match your bucket)
 2. "Error Pages" tab > "Create Custom Error Response" button
