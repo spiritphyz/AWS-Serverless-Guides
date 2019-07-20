@@ -50,7 +50,7 @@ We want to respond to any 4xx responses from our S3 bucket with index.html and a
  It may take up to 15 minutes for CloudFront to clone your content to all geographic regions. The status will be "Deployed" when it's done.
 
 ## Invalidating Old Content
-[ View the guide ](./000-Invalidating-Old-Data-on-Cloudfront.md) about deleting all copies of the content and forcing the distribution to pull from the source bucket again.
+[ View the guide ](./Invalidating-Old-Data-on-Cloudfront.md) about deleting all copies of the content and forcing the distribution to pull from the source bucket again.
 
 ## Deleting a Distribution
 1. Enable the checkbox for your distribution > "Disable" button > "Yes, Disable" > "Close" button (can take up to 15 minutes)
