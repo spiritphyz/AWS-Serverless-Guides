@@ -14,4 +14,4 @@ To become familiar with each AWS service, you will be given specific instruction
   * [Setting up IAM Identities](./FIXME)
   * [Installing the CLI Tools](./guides/Setting-Up-AWS-CLI-Tools.md)
   * [Using Gatsby's S3 Publish Plugin](./FIXME)
-  * [CLI Cheat Sheet of Command Tasks](./guides/AWS-CLI-Cheatsheet.md)
+  * [CLI Cheat Sheet of Common Tasks](./guides/AWS-CLI-Cheatsheet.md)
