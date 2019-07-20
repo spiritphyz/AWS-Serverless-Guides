@@ -6,12 +6,12 @@ These guides allow developers unfamiliar with the AWS platform to set up a secur
 To become familiar with each AWS service, you will be given specific instructions on where to customize options in the web-based Management Console. In the later guides, you will be shown how to accomplish many of the tasks through CLI-based terminal commands.
 
 **Customizing Services in the Management Console**
-  * [Creating a SSL/TLS Certificate for a Custom Domain](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md)
-  * [Creating a CloudFront Distribution](./Creating-a-CloudFront-Distribution.md)
-  * [Invalidating Old Data on Cloudfront](./Invalidating-Old-Data-on-Cloudfront.md)
+  * [Creating a SSL/TLS Certificate for a Custom Domain](./guides/Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md)
+  * [Creating a CloudFront Distribution](./guides/Creating-a-CloudFront-Distribution.md)
+  * [Invalidating Old Data on CloudFront](./guides/Invalidating-Old-Data-on-Cloudfront.md)
 
 **Automating Services through the CLI**
   * [Setting up IAM Identities](./FIXME)
-  * [Installing the CLI Tools](./000-Setting-Up-AWS-CLI-Tools.md)
+  * [Installing the CLI Tools](./guides/Setting-Up-AWS-CLI-Tools.md)
   * [Using Gatsby's S3 Publish Plugin](./FIXME)
-  * [CLI Cheat Sheet of Command Tasks](./000-AWS-CLI-Cheatsheet.md)
+  * [CLI Cheat Sheet of Command Tasks](./guides/AWS-CLI-Cheatsheet.md)
