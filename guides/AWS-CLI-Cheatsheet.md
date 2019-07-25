@@ -48,3 +48,23 @@ sed 's/YOURBUCKETNAME/example.com/g' ~/aws-policies/s3-bucket-public-read.json >
 ```bash
 aws s3api put-bucket-policy --bucket example.com --policy file://s3.json
 ```
+---
+
+# Sync to S3
+  * Replace `example.com` below with the name of your S3 bucket
+  * `aws sync` shares the same options as the Unix `rsync` tool
+```bash
+aws s3 sync --delete --exclude '*.DS_Store' public/ s3://example.com
+```
+
+---
+
+# Create a CloudFront Invalidation
+  * Replace the distribution ID below
+```bash
+# Typing command directly into terminal:
+aws cloudfront create-invalidation --distribution-id D0DISTRBID000D --paths /\*
+
+# As part of a JSON file (like package.json), you need to escape the backslash character:
+"scripts": { "invalidate:cf": "aws cloudfront create-invalidation --distribution-id D0DISTRBID000D --paths /\\*" }
+```
