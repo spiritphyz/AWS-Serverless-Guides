@@ -1,7 +1,7 @@
 # AWS-Serverless-Guides
 **Infrastructure guides for hosting secure, static sites on Amazon Web Services**
 
-These guides allow developers unfamiliar with the AWS platform to set up a secure static site using static site generators like [ GatsbyJS ](https://www.gatsbyjs.org/). The site contents are served with auto-renewing HTTPS certificates and are delivered on a CDN for faster response times.
+These guides allow developers unfamiliar with the AWS platform to deploy a secure static site using static site generators like [ GatsbyJS ](https://www.gatsbyjs.org/). The site contents are served with auto-renewing HTTPS certificates and are delivered on a CDN for faster response times.
 
 To become familiar with each AWS service, you will be given specific instructions on where to customize options in the web-based Management Console. In the later guides, you will be shown how to accomplish many of the tasks through CLI-based terminal commands.
 
