@@ -29,7 +29,7 @@ Instead of making an invalidation, you can also choose to make the distribution'
 4. Save the settings by clicking on "Yes, Edit" button at bottom of page
 
 ## Invalidating a distribution on the command line
- You can use the [AWS CLI to create an invalidation](./AWS-CLI-Cheatsheet.md). ***FIXME***
+ You can use the [CLI to create an invalidation](./AWS-CLI-Cheatsheet.md#create-a-cloudfront-invalidation).
 
 # Sources
   * https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html
