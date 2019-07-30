@@ -64,7 +64,12 @@ aws s3api put-bucket-policy --bucket example.com --policy file://s3.json
   * Replace `example.com` below with the name of your S3 bucket
   * `aws sync` shares the same options as the Unix `rsync` tool
 ```bash
+# Sync contents of directory "public" to destination bucket "example.com"
 aws s3 sync --delete --exclude '*.DS_Store' public/ s3://example.com
+
+# Sync to S3 using alternate profile.
+# See the guide "Setting-Up-IAM-Identities-for-CLI.md" for setup.
+aws s3 --profile analytics sync --delete public/ s3://example.com
 ```
 
 ---
