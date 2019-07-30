@@ -18,16 +18,18 @@ Each AWS user on your team can be added to "devteam".
 
 3. "Add user to group" button > "devteam" checkbox > "Next: Tags" button > "Next: Review" button > "Create user" button
 
-4. Save your "Access key ID" and "Secret access key", it **will only be shown once**!
+4. Save your "Access Key ID" and "Secret Access Key", it **will only be shown once**!
+    * You will paste the Accey Key ID and the Secret Access Key into the `aws configure` command below.
 
 ## Setting up stored credentials with CLI
+Run the configure command. Some example options are shown below.
 ```bash
 aws configure
 ```
 ```bash
 AWS Access Key ID: AKIAIOSFODNN7EXAMPLE
 AWS Secret Access Key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-Default region name [None]: us-west0
+Default region name [None]: us-west-1
 
 Default output format [None]: json
 ```
@@ -49,7 +51,7 @@ output=json
 ```
 
 ## Using multiple profiles
-You can edit the above 2 files to switch keys, for example:
+You can edit the above 2 files to configure multiple keys. For example, the S3 sync command below contains a switch to a separate profile:
 ```bash
 # Sync static site to S3 using alternate profile
 aws s3 --profile analytics sync --delete public/ s3://example.com
