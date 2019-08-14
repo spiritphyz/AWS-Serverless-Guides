@@ -3,8 +3,16 @@ Store your AWS credentials on your local machine for the CLI tools to authentica
 
 ## Create a group with limited admin privileges
 For the purposes of this guide, "devteam" will represent the group for individual developers that has shared privileges. This group will have administrative policies to manage S3 and CloudFront.
-1. Log into the management console, [search for IAM](https://console.aws.amazon.com/iam/home?region=us-west-2#/home)
-2. FIXME
+1. Log into the management console, [search for IAM](https://console.aws.amazon.com/iam/home)
+2. Create New Group > Group Name: devteam > "Next Step" button
+3. Attach Policy > Filter: policy type
+    * Search for "s3"
+    * Enable checkbox for "AmazonS3FullAccess"
+4. Attach Policy > Filter: policy type
+    * Search for "cloudfront"
+    * Enable checkbox for "CloudFrontFullAccess"
+6. "Next Step" button
+7. Review > Confirm there are 2 policies attached > "Create Group" button
 
 ## Create a user as part of a group
 Each AWS user on your team can be added to "devteam".
