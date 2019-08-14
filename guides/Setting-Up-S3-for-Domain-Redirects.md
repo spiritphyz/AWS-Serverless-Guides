@@ -2,9 +2,9 @@
   * Apex domain: `example.com`
   * Fully qualified domain: `www.example.com`
 
-It's tempting to set up DNS to use the bare apex domain of `example.com`. It seems to create a simpler canonical base for all of your hyperlinks. This apex domain is created with a CNAME record. However, new DNS records can't be made from CNAME records.
+It's tempting to set up [DNS](http://www.steves-internet-guide.com/dns-guide-beginners/) to use the apex domain of `example.com`. This seems to create a simpler canonical base for all of your hyperlinks. An apex domain is created with a CNAME record. However, new DNS records can't be made from CNAME records.
 
-For example, if you want to host email services on the bare domain, you can't create additional MX records from a CNAME record.
+For example, if you want to host email services on the apex domain, you can't create additional MX records from a CNAME record.
 
 It's better to start off all your hyperlinks with `www.example.com` (or any other subdomain `app.example.com`). By using the `www` subdomain, you have more flexibility in creating additional DNS records for common situations like:
   * MX records for email services
