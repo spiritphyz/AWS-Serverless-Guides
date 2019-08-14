@@ -1,6 +1,6 @@
 ## AWS Certificate Manager
 #### Managed certificate renewal
-ACM creates free HTTPS certificates that are continuously renewed by Amazon. These managed renewals are more reliable than the Let's Encrypt certificates that need brittle cron jobs that tend to break at unfortunate times – like at the beginning of the new year when few people are working, or during silent cron job breakage when the server is misconfigured.
+ACM creates free HTTPS certificates that are continuously renewed by Amazon. These managed renewals are more reliable than the Let's Encrypt certificates that need brittle cron jobs that tend to fail at unfortunate times when rare events aren't fully covered in the timing configuration.
 
 #### More secure site traffic, better SEO
 A SSL-enabled site will encrypt all network transfers, preventing attackers from inspecting the traffic or modifying it while in transit. All browsers will show a prominent "Not Secure" label next to the website if no SSL certificate is installed. SSL-enabled sites also score higher in Google's search rankings.
