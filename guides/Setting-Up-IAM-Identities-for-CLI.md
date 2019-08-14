@@ -13,8 +13,8 @@ For the purposes of this guide, "devteam" will represent the group for individua
 4. Attach Policy > Filter: policy type
     * Search for "cloudfront"
     * Enable checkbox for "CloudFrontFullAccess"
-6. "Next Step" button
-7. Review > Confirm there are 2 policies attached > "Create Group" button
+5. "Next Step" button
+6. Review > Confirm there are 2 policies attached > "Create Group" button
 
 ## Create a user as part of a group
 Each AWS user on your team can be added to "devteam".
