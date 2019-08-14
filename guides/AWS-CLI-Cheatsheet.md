@@ -83,9 +83,26 @@ aws cloudfront create-invalidation --distribution-id D0DISTRBID000D --paths /\*
 # As part of a JSON file (like package.json), you need to escape the backslash character:
 "scripts": { "invalidate:cf": "aws cloudfront create-invalidation --distribution-id D0DISTRBID000D --paths /\\*" }
 ```
+
+---
+
+# Delete a bucket
+  * All objects in the bucket must be deleted before the bucket can be deleted
+  * Replace `example.com` below with the name of your bucket
+  * The `region` parameter is optional
+```bash
+# First, remove all bucket objects
+aws s3 rm s3://example.com --recursive
+
+# Then remove the bucket
+aws s3api delete-bucket --bucket example.com --region us-west-1
+```
+
 ## Resources
 **S3 documentation**
   * https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html
+  * https://docs.aws.amazon.com/cli/latest/reference/s3api/delete-bucket.html
+  * https://docs.aws.amazon.com/AmazonS3/latest/dev/delete-or-empty-bucket.html#empty-bucket-awscli
   * https://docs.aws.amazon.com/cli/latest/reference/s3/website.html
   * https://docs.aws.amazon.com/cli/latest/reference/s3api/put-bucket-policy.html
   * https://stackoverflow.com/questions/39466716/how-do-i-get-the-aws-s3-website-endpoint-url-through-the-api
