@@ -14,12 +14,29 @@ It's better to start off all your hyperlinks with `www.example.com` (or any othe
 # Avoiding duplicate content
 We will use the full domain `www.example.com` for the base bucket and create a second bucket to redirect the apex domain to the full domain. This configuration avoids content duplication, which is heavily penalized by search engines.
 
-# Set up the base bucket
+# Set up the base bucket for hosting website content
 Replace `example.com` below with the domain of your website.
+
+**Create a new bucket**
 1. Log into the management console, [search for S3](https://console.aws.amazon.com/s3/home)
 1. "Create Bucket" button
     * Bucket name: `example.com`
-    * Region: `US West (N. California)`
+    * Region: `US West (N. California)` or other region closest to your upload source
+1. "Set permissions" screen
+    * Leave as enabled "Block new public ACLs"
+    * Leave as enabled "Remove public access granted through public ACLs"
+    * Disable "Block new public bucket policies"
+    * Disable "Block public and cross-account access"
+    * Click "Next" button
+1. "Review" screen > "Create bucket" button
+
+**Allow public read permissions**
+1. Log into the management console, [search for S3](https://console.aws.amazon.com/s3/home)
+1. Go back to [main S3 page](https://console.aws.amazon.com/s3/home), click on the name of your new bucket
+1. "Properties" tab > "Static Website Hosting" > Enable option for "Use this bucket to host a website"
+    * Index document: `index.html`
+    * Error document: `index.html`
+
 
 # Set up the redirect bucket
 # Add Canonical tags to the <head> section of pages
