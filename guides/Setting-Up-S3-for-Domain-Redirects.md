@@ -31,14 +31,38 @@ Replace `example.com` below with the domain of your website.
 1. "Review" screen > "Create bucket" button
 
 **Allow public read permissions**
-1. Log into the management console, [search for S3](https://console.aws.amazon.com/s3/home)
-1. Go back to [main S3 page](https://console.aws.amazon.com/s3/home), click on the name of your new bucket
+1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
+1. "Permissions" tab > "Bucket Policy" tab
+1. Add a public read policy using the policy editor:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AddPerm",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::YOURBUCKETNAME/*"
+    }
+  ]
+}
+```
+1. Press "Save" button
+
+**Enable static website hosting**
+1. Go back to [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
 1. "Properties" tab > "Static Website Hosting" > Enable option for "Use this bucket to host a website"
     * Index document: `index.html`
-    * Error document: `index.html`
-
+    * Error document: `error.html`
+        * If React Router is handling 404s, you can use `index.html`
+1. Press "Save" button
 
 # Set up the redirect bucket
+This separate bucket will redirect the apex domain to the bucket (created earlier) containing the content for the full domain.
+
+1. Log into the management console, [search for S3](https://console.aws.amazon.com/s3/home)
+
 # Add Canonical tags to the <head> section of pages
 # Set up rewrite rules for the base bucket
 
