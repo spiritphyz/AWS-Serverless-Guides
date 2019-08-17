@@ -79,52 +79,8 @@ This separate bucket will redirect the apex domain to the base bucket that conta
     * Target bucket or domain: `example.com`
 1. Press "Save" button
 
-# Add canonical tags to your pages
-Each page of your site should have a `<link>` tag that represents the "master copy" of the page. The hyperlink should have the fully qualified domain. The canonical version will appear in search engine results and help the crawlers avoid treating all of these URLs as separate pages of duplicate content:
-  * http://www.example.com
-  * https://www.example.com
-  * https://www.example.com/index.html
-  * https://www.example.com/index.html?step=2
-
-```html
-  <head>
-    <link rel="canonical" href="https://www.example.com/" />
-  </head>
-```
-
-# Set up path redirection for the base bucket
-If you need redirection rules similar to Apache's `.htaccess` file, you need to translate those rules into XML conditions for S3. You can paste the new rules into the Static Website Hosting settings.
-1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
-1. "Properties" tab > Static website hosting
-1. "Use this bucket to host a website" > Redirection rules (optional):
-
-Two example scenarios are given below. The first RoutingRule is based on protocol and domain (like `https://www.example.com/getting-here`).
-
-The second RoutingRule is to redirect the old URL fragment of `Old%20Manual.pdf` to a new path of `new-manual`.
-```xml
-<RoutingRules>
-  <RoutingRule>
-    <Condition>
-      <KeyPrefixEquals>driving-directions</KeyPrefixEquals>
-    </Condition>
-    <Redirect>
-      <Protocol>https</Protocol>
-      <HostName>www.example.com</HostName>
-      <ReplaceKeyWith>assets/pdf/driving-directions.pdf</ReplaceKeyWith>
-      <HttpRedirectCode>301</HttpRedirectCode>
-    </Redirect>
-  </RoutingRule>
-
-  <RoutingRule>
-    <Condition>
-      <KeyPrefixEquals>Old%20Manual.pdf</KeyPrefixEquals>
-    </Condition>
-    <Redirect>
-      <ReplaceKeyPrefixWith>new-manual</ReplaceKeyPrefixWith>
-    </Redirect>
-  </RoutingRule>
-</RoutingRules>
-```
+# Canonical tags and path redirects
+Although not required for a basic site, canonical tags can be added later to help boost search engine rankings. If you need Apache-style rewrite rules, S3 has a unique XML-based format. Both of these topics are covered in a [separate guide](./Canonical-Tags-and-URL-Rewrites.md).
 
 # Resources
   * https://www.netlify.com/blog/2017/02/28/to-www-or-not-www/
