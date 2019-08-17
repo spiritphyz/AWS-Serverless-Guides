@@ -1,4 +1,9 @@
-# Use a fully qualified domain for the canonical site
+# Introduction
+We will use 2 buckets on S3 to cover the needs to have HTTPS security, automatic redirection to the canonical site, and higher search engine ranking. The recommended setup is:
+  * Core bucket to store site content and be the destination for the full domain
+  * Redirect bucket will foward insecure requests and apex domain requests to the core bucket
+
+## Use a fully qualified domain for the canonical site
   * Apex domain: `example.com`
   * Fully qualified domain: `www.example.com`
 
@@ -7,12 +12,14 @@ It's tempting to set up [DNS](http://www.steves-internet-guide.com/dns-guide-beg
 For example, if you want to host email services on the apex domain, you won't be able to create the necessary MX records from a CNAME record.
 
 It's better to start off all your hyperlinks with `www.example.com` (or any other subdomain like `app.example.com`). By using the `www` subdomain, you have more flexibility in creating additional DNS records for common situations like:
-  * MX records for email services
+  * MX and SPF records for email services
   * TXT records for domain validation
   * Load balancing options to redirect traffic from subdomains. The "CNAME and A Name" combination records are tied to a raw IP address that can't be load balanced.
 
-# Avoiding duplicate content
-We will use the full domain `www.example.com` for the base bucket and create a second bucket to redirect the apex domain to the full domain. This configuration avoids content duplication, which is heavily penalized by search engines.
+## Avoid duplicate content
+We will use the full domain `www.example.com` for the base bucket and create a second bucket to redirect the apex domain to the full domain. This configuration avoids content duplication, which lowers ranking scores on search engines.
+
+---
 
 # Set up the base bucket for hosting website content
 Replace `example.com` below with the domain of your website.
@@ -51,20 +58,73 @@ Replace `example.com` below with the domain of your website.
 1. Press "Save" button
 
 **Enable static website hosting**
-1. Go back to [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
+1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
 1. "Properties" tab > "Static Website Hosting" > Enable option for "Use this bucket to host a website"
     * Index document: `index.html`
     * Error document: `error.html`
         * If React Router is handling 404s, you can use `index.html`
-1. Press "Save" button
+1. Press "Create bucket" button
 
 # Set up the redirect bucket
-This separate bucket will redirect the apex domain to the bucket (created earlier) containing the content for the full domain.
+This separate bucket will redirect the apex domain to the base bucket that contains the site content.
 
 1. Log into the management console, [search for S3](https://console.aws.amazon.com/s3/home)
+1. Press "Create bucket" button
+    * Bucket name: `redirect-example.com`
+    * Region: `US West (N. California)` or same as source bucket
+1. "Set permissions" > leave all defaults intact > "Create bucket" button
+1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `redirect-example.com`
+1. "Properties" tab > Static website hosting:
+    * Enable "Redirect requests" option
+    * Target bucket or domain: `example.com`
+1. Press "Save" button
 
-# Add Canonical tags to the <head> section of pages
-# Set up rewrite rules for the base bucket
+# Add canonical tags to your pages
+Each page of your site should have a `<link>` tag that represents the "master copy" of the page. The hyperlink should have the fully qualified domain. The canonical version will appear in search engine results and help the crawlers avoid treating all of these URLs as separate pages of duplicate content:
+  * http://www.example.com
+  * https://www.example.com
+  * https://www.example.com/index.html
+  * https://www.example.com/index.html?step=2
+
+```html
+  <head>
+    <link rel="canonical" href="https://www.example.com/" />
+  </head>
+```
+
+# Set up path redirection for the base bucket
+If you need redirection rules similar to Apache's `.htaccess` file, you need to translate those rules into XML conditions for S3. You can paste the new rules into the Static Website Hosting settings.
+1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
+1. "Properties" tab > Static website hosting
+1. "Use this bucket to host a website" > Redirection rules (optional):
+
+Two example scenarios are given below. The first RoutingRule is based on protocol and domain (like `https://www.example.com/getting-here`).
+
+The second RoutingRule is to redirect the old URL fragment of `Old%20Manual.pdf` to a new path of `new-manual`.
+```xml
+<RoutingRules>
+  <RoutingRule>
+    <Condition>
+      <KeyPrefixEquals>driving-directions</KeyPrefixEquals>
+    </Condition>
+    <Redirect>
+      <Protocol>https</Protocol>
+      <HostName>www.example.com</HostName>
+      <ReplaceKeyWith>assets/pdf/driving-directions.pdf</ReplaceKeyWith>
+      <HttpRedirectCode>301</HttpRedirectCode>
+    </Redirect>
+  </RoutingRule>
+
+  <RoutingRule>
+    <Condition>
+      <KeyPrefixEquals>Old%20Manual.pdf</KeyPrefixEquals>
+    </Condition>
+    <Redirect>
+      <ReplaceKeyPrefixWith>new-manual</ReplaceKeyPrefixWith>
+    </Redirect>
+  </RoutingRule>
+</RoutingRules>
+```
 
 # Resources
   * https://www.netlify.com/blog/2017/02/28/to-www-or-not-www/
