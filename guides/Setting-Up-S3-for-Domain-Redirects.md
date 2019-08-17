@@ -1,7 +1,7 @@
 # Introduction
-We will use 2 buckets on S3 to cover the needs to have HTTPS security, automatic redirection to the canonical site, and higher search engine ranking. The recommended setup is:
-  * Core bucket to store site content and be the destination for the full domain
-  * Redirect bucket will foward insecure requests and apex domain requests to the core bucket
+We will use 2 buckets to cover the needs for HTTPS security, automatic redirection to the canonical site, and higher search engine ranking. The recommended setup is:
+  * **Core bucket** to store site content for the full domain
+  * **Redirect bucket** will foward insecure requests and apex domain requests to the core bucket
 
 ## Use a fully qualified domain for the canonical site
   * Apex domain: `example.com`
