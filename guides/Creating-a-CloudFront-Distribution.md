@@ -1,10 +1,15 @@
-# Creating a CloudFront Distribution
+# Creating CloudFront Distributions
 
 ### Distributions
 A "distribution" is the collection of an origin location (your website) and edge locations. The content delivery network (CDN) makes clones of the origin content and places them at edge locations closer to the end user for faster delivery.
 
+In the configuration below, we will have 2 distributions, one for the origin bucket and another for the redirect bucket.
+
 ### Origin Bucket
-We will use an S3 bucket as the origin location for our content. S3 buckets can host static content, which has more cost, maintenance, and performance benefits than administering live servers.
+We will use a S3 bucket as the origin location for our content. S3 buckets can host static content, which has more cost, maintenance, and performance benefits than administering live servers. The distribution in front of this bucket will redirect insecure links to secure ones.
+
+### Redirect Bucket
+This empty bucket will redirect apex links to the fully qualified domain. The distribution in front of this bucket will redirect insecure apex links to the secure fully-qualified links.
 
 ### Standard Behaviors
 We will set up typical features for faster content delivery and standardize the domain behavior for search engine indexing:
@@ -12,8 +17,10 @@ We will set up typical features for faster content delivery and standardize the 
   * Make the apex domain `example.com` redirect to the fully qualified domain `www.example.com`
   * Redirect the insecure protocol `http://example.com` to the secure `https://www.example.com`
 
+---
+
 ## Creating a Distribution
-1. Log into the AWS Management Console and search for [ CloudFront ](https://console.aws.amazon.com/cloudfront/home?#)
+1. Log into the AWS Management Console and search for [CloudFront](https://console.aws.amazon.com/cloudfront/home?#)
 2. "Create Distribution" button > Web delivery method > "Get Started" button
 3. Origin Domain Name: DO NOT choose your S3 bucket from the dropdown list
     * Put in the **Static Website Hosting** endpoint.
@@ -34,9 +41,10 @@ We will set up typical features for faster content delivery and standardize the 
 10. Click "Create Distribution" button
 
 ## Customizing Error Pages
-TODO: rewrite this section to capture 404 and 500 error codes
+One strategy for a simpler website is to redirect 404 and 500 errors to the main index page. This may not be desirable if you are trying to use analytics to find broken links.
 
-We want to respond to any 4xx responses from our S3 bucket with index.html and a 200 status code. We are trying to avoid 4xx responses that may be blocked by certain corporate firewalls and proxies, which tend to block 4xx and 5xx responses.
+In this simpler scenario, we want to respond to broken links with a redirect to `index.html` and a 200 status code. We are trying to avoid 4xx responses that may be blocked by corporate firewalls and proxies, which tend to block 4xx and 5xx responses.
+
 1. Click on the ID on the newly created distribution (origin should match your bucket)
 2. "Error Pages" tab > "Create Custom Error Response" button
     * HTTP Error Code: 403: Forbidden
@@ -50,7 +58,7 @@ We want to respond to any 4xx responses from our S3 bucket with index.html and a
  It may take up to 15 minutes for CloudFront to clone your content to all geographic regions. The status will be "Deployed" when it's done.
 
 ## Invalidating Old Content
-[ View the guide ](./Invalidating-Old-Data-on-Cloudfront.md) about deleting all copies of the content and forcing the distribution to pull from the source bucket again.
+[View the guide](./Invalidating-Old-Data-on-Cloudfront.md) about deleting all copies of the content and forcing the distribution to pull from the source bucket again.
 
 ## Deleting a Distribution
 1. Enable the checkbox for your distribution > "Disable" button > "Yes, Disable" > "Close" button (can take up to 15 minutes)
