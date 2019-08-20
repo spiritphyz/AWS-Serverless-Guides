@@ -17,7 +17,7 @@ Note: certificate requests time out after 72 hours if they can't be validated.
 ## Use the certificate in CloudFront
 Certificates with custom domains can only be used with CloudFront distributions, not with S3 buckets.
 
-The configuration below will follow the recommended approach of having a core bucket be the destination for the full domain `www.example.com`. Also, a redirect bucket will handle redirecting the apex domain `example.com` to the contents in the core bucket. Two CloudFront distributions sit in front of both buckets for CDN functionality and will be used as the targets for the DNS records.
+The configuration below will follow the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md#introduction) of having a core bucket be the destination for the full domain `www.example.com`. Also, a redirect bucket will handle redirecting the apex domain `example.com` to the contents in the core bucket. Two CloudFront distributions sit in front of both buckets for CDN functionality and will be used as the targets for the DNS records.
 
 ### Use the certificate for the full domain
 1. In the AWS Management Console, search for [ CloudFront ](https://console.aws.amazon.com/cloudfront/home?#)
