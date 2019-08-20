@@ -27,27 +27,31 @@ The configuration below will follow the recommended approach of having a core bu
     * [www.example.com]()
 4. "Yes, Edit" button
 5. Change the default cache behavior
-    * "Behaviors" tab > Select checkbox for "Default (*)" > "Edit" button > Viewer Protocol Policy > Redirect HTTP to HTTPS
+    * "Behaviors" tab > Select checkbox for "Default (*)" > "Edit" button > Viewer Protocol Policy
+    * Leave this as "HTTP and HTTPS" so we let users go directly to the HTTPS version and not produce an extra redirect
     * "Yes, Edit" button
 
 ### Use the certificate for the apex domain
-1. In the AWS Management Console, search for [ CloudFront ](https://console.aws.amazon.com/cloudfront/home?#)
+1. Go back to the main [CloudFront](https://console.aws.amazon.com/cloudfront/home?#) page
 2. Click on the distribution ID that matches your **redirect** bucket > "Edit" button > SSL Certificate > Custom SSL Certification
     * In the auto-populated dropdown list, pick the certificate made through Certificate Manager
 3. Alternate Domain Names (CNAMEs) > add domain names below and separate them by new lines
     * [example.com]()
 4. "Yes, Edit" button
 5. Change the default cache behavior
-    * "Behaviors" tab > Select checkbox for "Default (*)" > "Edit" button > Viewer Protocol Policy > Redirect HTTP to HTTPS
+    * "Behaviors" tab > Select checkbox for "Default (*)" > "Edit" button > Viewer Protocol Policy
+    * **Redirect HTTP to HTTPS**
     * "Yes, Edit" button
 
 It will take some time for your changes to propagate across all geographic regions, around 15 minutes.
 
 ## Set "A Records" with aliases to CloudFront
-Before making the changes below, make sure the CloudFront distribution has a status of "Deployed". We will set up both IPv4 and IPv6 DNS records.
+Before making the changes below, make sure the CloudFront distributions has a status of "Deployed".
+
+The Hosted Zone of `example.com.` will have been automatically created by AWS during the creation of the [TLS certificate](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md). The Hosted Zone contains DNS records for both the `www.example.com` and `example.com` domains. We will create IPv4 and IPv6 records.
 
 1. Log into the AWS Management Console, search for [Route 53](https://console.aws.amazon.com/route53/home?#)
-1. "Hosted zones" on left sidebar > www.example.com. > Enable checkbox for "www.example.com.", Type A > change settings on
+1. "Hosted zones" on left sidebar > [example.com.]() > Click on "www.example.com." > Type A > change settings on
 right sidebar
     * Type: A - IPv4 address
     * Alias: Yes
