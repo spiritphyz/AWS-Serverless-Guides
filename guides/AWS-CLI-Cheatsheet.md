@@ -1,5 +1,5 @@
 # AWS CLI Cheatsheet
-Listed below are example CLI commands you can use to "copy, paste, configure, then commit the command". The fussy options are listed as a starting template for you can quickly configure Amazon Web Services without using the web-based Management Console.
+Listed below are example CLI commands you can use to "copy, paste, configure, then commit the command". The fussy options are listed as a starting template for you to quickly configure Amazon Web Services without using the web-based Management Console.
 
 ## Requirements
  * [CLI tools are installed](./Setting-Up-AWS-CLI-Tools.md)

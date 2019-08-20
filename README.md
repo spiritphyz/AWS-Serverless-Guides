@@ -9,7 +9,7 @@ To learn the main configuration of each AWS service, you will be given specific 
   * [Managed Certificates and DNS Services](./guides/About-Certificate-Manager-and-Route-53.md)
   * [Creating a SSL/TLS Certificate for a Custom Domain](./guides/Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md)
   * [Setting up S3 for Domain Redirects](./guides/Setting-Up-S3-for-Domain-Redirects.md)
-  * [Creating a CloudFront Distribution](./guides/Creating-a-CloudFront-Distribution.md)
+  * [Creating CloudFront Distributions](./guides/Creating-CloudFront-Distributions.md)
   * [Invalidating Old Data on CloudFront](./guides/Invalidating-Old-Data-on-Cloudfront.md)
 
 **Customizing Services through the CLI**

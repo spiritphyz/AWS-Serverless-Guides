@@ -3,13 +3,8 @@
 ### Distributions
 A "distribution" is the collection of an origin location (your website) and edge locations. The content delivery network (CDN) makes clones of the origin content and places them at edge locations closer to the end user for faster delivery.
 
-In the configuration below, we will have 2 distributions, one for the origin bucket and another for the redirect bucket.
-
 ### Origin Bucket
 We will use a S3 bucket as the origin location for our content. S3 buckets can host static content, which has more cost, maintenance, and performance benefits than administering live servers. The distribution in front of this bucket will redirect insecure links to secure ones.
-
-### Redirect Bucket
-This empty bucket will redirect apex links to the fully qualified domain. The distribution in front of this bucket will redirect insecure apex links to the secure fully-qualified links.
 
 ### Standard Behaviors
 We will set up typical features for faster content delivery and standardize the domain behavior for search engine indexing:
@@ -19,26 +14,26 @@ We will set up typical features for faster content delivery and standardize the 
 
 ---
 
-## Creating a Distribution
+## Create a Distribution for the Origin Bucket
 1. Log into the AWS Management Console and search for [CloudFront](https://console.aws.amazon.com/cloudfront/home?#)
-2. "Create Distribution" button > Web delivery method > "Get Started" button
-3. Origin Domain Name: DO NOT choose your S3 bucket from the dropdown list
-    * Put in the **Static Website Hosting** endpoint.
+1. "Create Distribution" button > Web delivery method > "Get Started" button
+1. Origin Domain Name: **DO NOT** choose your S3 bucket from the dropdown list
+    * Put in the [Static Website Hosting](./AWS-CLI-Cheatsheet.md#notes-on-static-website-hosting-links) endpoint.
     * The endpoint will have `-website-` in its name, like:
       * `example.com.s3-website-us-west-1.amazonaws.com`
-4. Origin ID: will automatically fill in if you pick your S3 bucket
-5. Enable HTTPS
+1. Origin ID: will automatically fill in if you pick your S3 bucket
+1. Enable HTTPS
     * Viewer Protocol Policy: Redirect HTTP to HTTPS
-6. Set Minimum TTL to be 1 hour before CloudFront fetches from the origin
+1. Set Minimum TTL to be 1 hour before CloudFront fetches from the origin
     * Object Caching: Customize
     * Minimum TTL: 3600
-7. Enable GZIP
+1. Enable GZIP
     * Compress Objects Automatically: Yes
-8. Price Class: "Use Only U.S., Canada and Europe"
+1. Price Class: "Use Only U.S., Canada and Europe"
     * If your servics aren't available outside the U.S., then you should pick this lower price class
-9. Default Root Object: `index.html`
+1. Default Root Object: `index.html`
     * If React Router can't handle loading `domain.com/index.html` without showing an error, then leave this value blank
-10. Click "Create Distribution" button
+1. Click "Create Distribution" button
 
 ## Customizing Error Pages
 One strategy for a simpler website is to redirect 404 and 500 errors to the main index page. This may not be desirable if you are trying to use analytics to find broken links.

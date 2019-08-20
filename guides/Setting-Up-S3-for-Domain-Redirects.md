@@ -17,11 +17,11 @@ It's better to start off all your hyperlinks with `www.example.com` (or any othe
   * Load balancing options to redirect traffic from subdomains. The "CNAME and A Name" combination records are tied to a raw IP address that can't be load balanced.
 
 ## Avoid duplicate content
-We will use the full domain `www.example.com` for the base bucket and create a second bucket to redirect the apex domain to the full domain. This configuration avoids content duplication, which lowers ranking scores on search engines.
+We will use the full domain `www.example.com` for the core bucket and create a second bucket to redirect the apex domain to the full domain. This configuration avoids content duplication, which lowers ranking scores on search engines.
 
 ---
 
-# Set up the base bucket for hosting website content
+# Set up the core bucket for hosting website content
 Replace `example.com` below with the domain of your website.
 
 **Create a new bucket**
@@ -66,7 +66,7 @@ Replace `example.com` below with the domain of your website.
 1. Press "Create bucket" button
 
 # Set up the redirect bucket
-This separate bucket will redirect the apex domain to the base bucket that contains the site content.
+This separate bucket will redirect the apex domain to the core bucket that contains the site content.
 
 1. Log into the management console, [search for S3](https://console.aws.amazon.com/s3/home)
 1. Press "Create bucket" button

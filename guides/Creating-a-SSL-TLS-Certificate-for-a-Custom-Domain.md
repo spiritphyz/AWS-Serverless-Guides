@@ -3,9 +3,9 @@ Note: certificate requests time out after 72 hours if they can't be validated.
 
 1. In the AWS Management Console, search for [ Certificate Manager ](https://console.aws.amazon.com/acm/home?region=us-east-1#/)
 2. "Request a certificate" button > "Request a public certificate" button
-    * Domain name: [ www.example.com ](https://www.example.com/)
+    * Domain name: [www.example.com]()
 3. "Add another name to this certificate" button >
-example.com
+    * Domain name: [example.com]()
 4. Choose DNS validation (we can modify the DNS configuration in AWS)
     * Status for both domains will be "Pending validation"
 5. "Review" button > "Confirm and request" button > "Continue" button
@@ -16,11 +16,26 @@ example.com
 
 ## Use the certificate in CloudFront
 Certificates with custom domains can only be used with a CloudFront distribution, not with an S3 bucket.
+
+The configuration below will follow the recommended approach of having a core bucket be the destination for the full domain `www.example.com`. A redirect bucket will handle redirecting the apex domain `example.com` to the contents in the core bucket.
+
+### Use the certificate for the full domain
 1. In the AWS Management Console, search for [ CloudFront ](https://console.aws.amazon.com/cloudfront/home?#)
-2. Click on the distribution ID that matches your origin bucket > "Edit" button > SSL Certificate > Custom SSL Certification
+2. Click on the distribution ID that matches your **base** bucket > "Edit" button > SSL Certificate > Custom SSL Certification
     * In the auto-populated dropdown list, pick the certificate made through Certificate Manager
 3. Alternate Domain Names (CNAMEs) > add domain names below and separate them by new lines
-    * www.example.com
+    * [www.example.com]()
+4. "Yes, Edit" button
+5. Change the default cache behavior
+    * "Behaviors" tab > Select checkbox for "Default (*)" > "Edit" button > Viewer Protocol Policy > Redirect HTTP to HTTPS
+    * "Yes, Edit" button
+
+### Use the certificate for the apex domain
+1. In the AWS Management Console, search for [ CloudFront ](https://console.aws.amazon.com/cloudfront/home?#)
+2. Click on the distribution ID that matches your **redirect** bucket > "Edit" button > SSL Certificate > Custom SSL Certification
+    * In the auto-populated dropdown list, pick the certificate made through Certificate Manager
+3. Alternate Domain Names (CNAMEs) > add domain names below and separate them by new lines
+    * [example.com]()
 4. "Yes, Edit" button
 5. Change the default cache behavior
     * "Behaviors" tab > Select checkbox for "Default (*)" > "Edit" button > Viewer Protocol Policy > Redirect HTTP to HTTPS
@@ -29,18 +44,25 @@ Certificates with custom domains can only be used with a CloudFront distribution
 It will take some time for your changes to propagate across all geographic regions, around 15 minutes.
 
 ## Set "A Records" with aliases to CloudFront
-Before making the changes below, make sure the CloudFront distribution has a status of "Deployed".
+Before making the changes below, make sure the CloudFront distribution has a status of "Deployed". We will set up both IPv4 and IPv6 DNS records.
+
 1. Log into the AWS Management Console, search for [Route 53](https://console.aws.amazon.com/route53/home?#)
-2. "Hosted zones" on left sidebar > www.example.com. > Enable checkbox for "www.example.com.", Type A > change settings on
+1. "Hosted zones" on left sidebar > www.example.com. > Enable checkbox for "www.example.com.", Type A > change settings on
 right sidebar
     * Type: A - IPv4 address
     * Alias: Yes
-    * Alias Target: Dropdown list should show your CloudFront distribution, so pick it
+    * Alias Target: Dropdown list should show your CloudFront distribution for the full domain, so pick it
     * "Save Record Set" button
-3. ~~Repeat Step 2 with with the A Record for the bare domain: example.com~~
-TODO: rewrite this section for creating a Redirect S3 Bucket and Redirect CloudFront, then connecting "A" Record to Redirect CloudFront
-4. Check website in browser
-    * Make sure the the insecure domain "http://www.example.com" redirects to "[**https**://www.example.com](https://www.example.com)"
+1. Go back to the main [Route 53](https://console.aws.amazon.com/route53/home?#) page
+1. "Hosted zones" on left sidebar > www.example.com. > Enable checkbox for "www.example.com.", Type A > change settings on
+right sidebar
+    * Type: A - IPv4 address
+    * Alias: Yes
+    * Alias Target: Dropdown list should show your CloudFront distribution for the full domain, so pick it
+    * "Save Record Set" button
+
+## Check domains in browser
+Make sure the the insecure domain "http://www.example.com" redirects to "[**https**://www.example.com](https://www.example.com)". It may take some time for the DNS changes to be seen by your ISP and local company network.
 
 # Resources
   * https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html
