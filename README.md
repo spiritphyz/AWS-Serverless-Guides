@@ -6,11 +6,11 @@ These guides allow developers unfamiliar with the AWS platform to deploy a secur
 To learn the main configuration of each AWS service, you will be given specific instructions on where to customize options in the web-based Management Console. In the later guides, you will be shown how to accomplish many of the tasks through CLI-based terminal commands.
 
 **Customizing Services in the Management Console**
-  * [Managed Certificates and DNS Services](./guides/About-Certificate-Manager-and-Route-53.md)
-  * [Creating a SSL/TLS Certificate for a Custom Domain](./guides/Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md)
   * [Setting up S3 for Domain Redirects](./guides/Setting-Up-S3-for-Domain-Redirects.md)
   * [Creating CloudFront Distributions](./guides/Creating-CloudFront-Distributions.md)
   * [Invalidating Old Data on CloudFront](./guides/Invalidating-Old-Data-on-Cloudfront.md)
+  * [Managed Certificates and DNS Services](./guides/About-Certificate-Manager-and-Route-53.md)
+  * [Creating a SSL/TLS Certificate for a Custom Domain](./guides/Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md)
 
 **Customizing Services through the CLI**
   * [Setting up IAM Identities](./guides/Setting-Up-IAM-Identities-for-CLI.md)

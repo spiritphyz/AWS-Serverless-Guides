@@ -28,7 +28,7 @@ Instead of making an invalidation, you can also choose to make the distribution'
     * Set the Minimum TTL to 3600
 4. Save the settings by clicking on "Yes, Edit" button at bottom of page
 
-## Invalidating a distribution on the command line
+## Invalidating a distribution in the terminal
  You can use the [CLI to create an invalidation](./AWS-CLI-Cheatsheet.md#create-a-cloudfront-invalidation).
 
 # Sources
