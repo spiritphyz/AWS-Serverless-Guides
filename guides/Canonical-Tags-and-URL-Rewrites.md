@@ -1,15 +1,19 @@
 # Add canonical tags to your pages
-Each page of your site should have a `<link>` tag that represents the "master copy" of the page. The hyperlink should have the fully qualified domain. The canonical version will appear in search engine results and help the crawlers avoid treating all of these URLs as separate pages of duplicate content:
+Every page of your site should have a `<link>` tag that represents the "master copy" of the page. The hyperlink should have the fully qualified domain. The canonical version will appear in search engine results and help the crawlers avoid treating URL variations as separate pages of duplicate content.
+#### URL variations that shouldn't be indexed
   * http://www.example.com
   * https://www.example.com
   * https://www.example.com/index.html
   * https://www.example.com/index.html?step=2
 
+#### Example link tag for the canonical home page
 ```html
   <head>
     <link rel="canonical" href="https://www.example.com/" />
   </head>
 ```
+
+---
 
 # Set up path redirection for the base bucket
 If you need redirection rules similar to Apache's `.htaccess` file, you need to translate those rules into XML conditions for S3. You can paste the new rules into the Static Website Hosting settings.
@@ -49,5 +53,6 @@ The second RoutingRule is to redirect the old URL fragment of `Old%20Manual.pdf`
 Note that `<KeyPrefixEquals>` **cannot begin with a slash** (as is the usual pattern in  `.htaccess` files). The condition matches a S3 key and not a web path.
 
 # Resources
+  * https://moz.com/learn/seo/canonicalization
   * https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html#advanced-conditional-redirects
   * https://www.joshmcarthur.com/til/2018/09/04/configuring-s3-redirect-rules.html
