@@ -6,10 +6,10 @@ Note: certificate requests time out after 72 hours if they can't be validated.
     * Domain name: [www.example.com]()
 3. "Add another name to this certificate" button >
     * Domain name: [example.com]()
-4. Choose DNS validation (we can modify the DNS configuration in AWS)
+4. Choose DNS validation
     * Status for both domains will be "Pending validation"
 5. "Review" button > "Confirm and request" button > "Continue" button
-    * If all DNS settings are managed by Route 53 (and not a custom domain manager like GoDaddy), you can click "Create record in Route 53" button for both domains
+    * If all DNS settings are managed by Route 53 (and not a custom registrar like GoDaddy), you can click "Create record in Route 53" button for both domains
     * You should see a "Success" message for both domains
     * It may take up to 30 minutes for the changes to propagate and for AWS to validate the domain
     * The final status for each domain should be "Issued"
@@ -17,11 +17,13 @@ Note: certificate requests time out after 72 hours if they can't be validated.
 ## Use the certificate in CloudFront
 Certificates with custom domains can only be used with CloudFront distributions, not with S3 buckets.
 
-The configuration below will follow the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md#introduction) of having a core bucket be the destination for the full domain `www.example.com`. Also, a redirect bucket will handle redirecting the apex domain `example.com` to the contents in the core bucket. Two CloudFront distributions sit in front of both buckets for CDN functionality and will be used as the targets for the DNS records.
+The configuration below will follow the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md#introduction) of first having a core bucket for the full domain "`www.example.com`". Then a redirect bucket will handle forwarding requests for the apex domain "`example.com`" to the contents in the core bucket.
+
+Two CloudFront distributions sit in front of both buckets for CDN functionality and will be used as the targets for the DNS records.
 
 ### Use the certificate for the full domain
 1. In the AWS Management Console, search for [ CloudFront ](https://console.aws.amazon.com/cloudfront/home?#)
-2. Click on the distribution ID that matches your **base** bucket > "Edit" button > SSL Certificate > Custom SSL Certification
+2. Click on the distribution ID that matches your **core** bucket > "Edit" button > SSL Certificate > Custom SSL Certification
     * In the auto-populated dropdown list, pick the certificate made through Certificate Manager
 3. Alternate Domain Names (CNAMEs) > add domain names below and separate them by new lines
     * [www.example.com]()
@@ -48,18 +50,18 @@ It will take some time for your changes to propagate across all geographic regio
 ## Set DNS records with aliases to CloudFront
 Before making the changes below, make sure the CloudFront distributions has a status of "Deployed".
 
-The Hosted Zone of `example.com.` was automatically created by AWS during the creation of the [TLS certificate](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md). The Hosted Zone contains DNS records for both the `www.example.com` and `example.com` domains.
+The Hosted Zone of `example.com.` was automatically created by Certificate Manager during the creation of the certificate. The Hosted Zone contains DNS records for both the `www.example.com` and `example.com` domains.
 
 ### Full domain records
 1. Log into the AWS Management Console, search for [Route 53](https://console.aws.amazon.com/route53/home?#)
 1. "Hosted zones" on left sidebar > [example.com.]() > "Create Record Set" button > change settings on right sidebar
-    * Name: `www`.adcetrispro.com.
+    * Name: `www`.example.com.
     * Type: A - IPv4 address
     * Alias: Yes
     * Alias Target: Dropdown list should show your CloudFront distribution for the full domain, so pick it
     * "Save Record Set" button
 1. "Create Record Set" button > change settings on right sidebar
-    * Name: `www`.adcetrispro.com.
+    * Name: `www`.example.com.
     * Type: AAAA - IPv6 address
     * Alias: Yes
     * Alias Target: Dropdown list should show your CloudFront distribution for the full domain, so pick it
@@ -68,19 +70,24 @@ The Hosted Zone of `example.com.` was automatically created by AWS during the cr
 1. Go back to the main [Route 53](https://console.aws.amazon.com/route53/home?#) page
 1. "Hosted zones" on left sidebar > [example.com.]() > "Create Record Set" button > change settings on right sidebar
 right sidebar
-    * Name: adcetrispro.com. (leave subdomain as blank)
+    * Name: example.com. (leave subdomain as blank)
     * Type: A - IPv4 address
     * Alias: Yes
     * Alias Target: Dropdown list should show your CloudFront distribution for the apex domain, so pick it
     * "Save Record Set" button
 1. "Create Record Set" button > change settings on right sidebar
-    * Name: adcetrispro.com. (leave subdomain as blank)
+    * Name: example.com. (leave subdomain as blank)
     * Type: AAAA - IPv6 address
     * Alias: Yes
     * Alias Target: Dropdown list should show your CloudFront distribution for the full domain, so pick it
 
-## Check domains in browser
-Make sure the the insecure domain "http://www.example.com" redirects to "[**https**://www.example.com](https://www.example.com)". It may take some time for the DNS changes to be seen by your ISP and local company network.
+## Verify that domain redirection is working
+In a browser, make sure these domain requests are being redirected:
+  * http://www.example.com redirects to https://www.example.com
+  * http://example.com redirects to https://www.example.com
+  * https://example.com redirects to https://www.example.com
+
+It may take some time for the DNS changes to be seen by your ISP and local company network.
 
 # Resources
   * https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html
