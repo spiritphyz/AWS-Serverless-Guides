@@ -1,7 +1,7 @@
 # Introduction
 We will use 2 buckets to cover the needs for HTTPS security, automatic redirection to the canonical site, and higher search engine ranking. The recommended setup is:
   * **Core bucket** to store site content for the full domain
-  * **Redirect bucket** will foward insecure requests and apex domain requests to the core bucket
+  * **Redirect bucket** will foward apex domain requests to the core bucket
 
 ## Use a fully qualified domain for the canonical site
   * Apex domain: `example.com`
@@ -21,8 +21,8 @@ We will use the full domain `www.example.com` for the core bucket and create a s
 
 ---
 
-# Set up the core bucket for hosting website content
-Replace `example.com` below with the domain of your website.
+# Set up the core bucket
+The core bucket will host your static website content. Replace `example.com` below with the domain of your website.
 
 **Create a new bucket**
 1. Log into the management console, [search for S3](https://console.aws.amazon.com/s3/home)
