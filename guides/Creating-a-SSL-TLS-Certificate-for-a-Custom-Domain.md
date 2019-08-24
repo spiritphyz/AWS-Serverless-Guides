@@ -1,9 +1,9 @@
 # Sections in this guide
-  - [ ] [Create a certificate tied to a custom domain]()
-  - [ ] [Use the certificate in CloudFront]()
-  - [ ] [Set DNS records with aliases to CloudFront]()
-  - [ ] [Verify that domain redirection is working]()
-  - [ ] [Resources]()
+  - [ ] [Create a certificate tied to a custom domain](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md#create-a-certificate-tied-to-a-custom-domain)
+  - [ ] [Use the certificate in CloudFront](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md#use-the-certificate-in-cloudfront)
+  - [ ] [Set DNS records with aliases to CloudFront](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md#set-dns-records-with-aliases-to-cloudfront)
+  - [ ] [Verify that domain redirection is working](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md#verify-that-domain-redirection-is-working)
+  - [ ] [Resources](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md#resources)
 
 ---
 
