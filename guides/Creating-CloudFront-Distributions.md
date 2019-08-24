@@ -1,7 +1,14 @@
-# Creating CloudFront Distributions
+# Sections in this guide
+  - [ ] [Introduction](./Creating-CloudFront-Distributions.md#introduction)
+  - [ ] [Create a distribution for the origin bucket]()
+  - [ ] [Customizing error pages]()
+  - [ ] [Invalidating old content]()
+  - [ ] [Deleting a distribution]()
+  - [ ] [Resources]()
 
-![2 CloudFront Distributions](../images/cloudfront.png)
+---
 
+## Introduction
 ### Distributions
 A "distribution" is the collection of an origin location (your website) and edge locations. The content delivery network (CDN) makes clones of the origin content and places them at edge locations closer to the end user for faster delivery.
 
@@ -61,7 +68,7 @@ In this simpler scenario, we want to respond to broken links with a redirect to 
 1. Enable the checkbox for your distribution > "Disable" button > "Yes, Disable" > "Close" button (can take up to 15 minutes)
 2. After the status is "Deployed" instead of "In Progress", enable the checkbox for your distribution > "Delete" button > "Yes, Delete" > "Close" button
 
-# Sources
+# Resources
   * http://lofi.fi/deploying-gatsbyjs-to-amazon-aws/
   * https://aws.amazon.com/blogs/aws/new-gzip-compression-support-for-amazon-cloudfront/
   * https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/
