@@ -16,14 +16,18 @@ A "distribution" is the collection of an origin location (your website) and edge
 We will use a S3 bucket as the origin location for our content. S3 buckets can host static content, which has more cost, maintenance, and performance benefits than administering live servers. The distribution in front of this bucket will redirect insecure links to secure ones.
 
 ### Standard behaviors
-We will set up typical features for faster content delivery and standardize the domain behavior for search engine indexing:
+We will set up typical features for faster content delivery and better search engine indexing:
   * Enable GZIP for network transfers
-  * Make the apex domain `example.com` redirect to the fully qualified domain `www.example.com`
-  * Redirect the insecure protocol `http://example.com` to the secure `https://www.example.com`
+  * Set refresh for new content at 1 hour
+  * Redirect the insecure protocol `http://www.example.com` to the secure `https://www.example.com`
 
 ---
 
 ## Create a distribution for the origin bucket
+To keep the instructions from becoming too unwieldy, the scenario below assumes you are only making 1 basic distribution.
+
+To accomodate the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md#introduction) of having 2 S3 origin buckets, you will need to repeat the instructions below for the redirect bucket. Later, we will further customize the basic distributions you create here to [incorporate custom domains](./Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md).
+
 1. Log into the AWS Management Console and search for [CloudFront](https://console.aws.amazon.com/cloudfront/home?#)
 1. "Create Distribution" button > Web delivery method > "Get Started" button
 1. Origin Domain Name: **DO NOT** choose your S3 bucket from the dropdown list
