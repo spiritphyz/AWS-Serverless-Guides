@@ -1,6 +1,6 @@
 # AWS-Serverless-Guides
 
-![Infrastructure Diagram](../images/static-site-on-aws-with-labels.png)
+![Infrastructure Diagram](./images/static-site-on-aws-with-labels.png)
 
 **Infrastructure guides for hosting secure, static sites on Amazon Web Services**
 
