@@ -1,14 +1,14 @@
 # Sections in this guide
-  - [ ] [Introduction](./Creating-CloudFront-Distributions.md#introduction)
-  - [ ] [Create a distribution for the origin bucket]()
-  - [ ] [Customizing error pages]()
-  - [ ] [Invalidating old content]()
-  - [ ] [Deleting a distribution]()
-  - [ ] [Resources]()
+  - [ ] [Introduction to CloudFront](./Creating-CloudFront-Distributions.md#introduction-to-cloudfront)
+  - [ ] [Create a distribution for the origin bucket](./Creating-CloudFront-Distributions.md#create-a-distribution-for-the-origin-bucket)
+  - [ ] [Customizing error pages](./Creating-CloudFront-Distributions.md#customizing-error-pages)
+  - [ ] [Invalidating old content](./Creating-CloudFront-Distributions.md#invalidating-old-content)
+  - [ ] [Deleting a distribution](./Creating-CloudFront-Distributions.md#deleting-a-distribution)
+  - [ ] [Resources](./Creating-CloudFront-Distributions.md#resources)
 
 ---
 
-## Introduction
+## Introduction to CloudFront
 ### Distributions
 A "distribution" is the collection of an origin location (your website) and edge locations. The content delivery network (CDN) makes clones of the origin content and places them at edge locations closer to the end user for faster delivery.
 
