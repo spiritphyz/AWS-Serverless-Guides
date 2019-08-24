@@ -1,4 +1,7 @@
 ## AWS Certificate Manager
+
+![DNS and Certificates](../images/route-53-and-certificate-manager.png)
+
 #### Managed certificate renewal
 ACM creates free HTTPS certificates that are continuously renewed by Amazon. These managed renewals are more reliable than the Let's Encrypt certificates that need brittle cron jobs that may fail when rare events aren't fully covered in the timing configuration.
 

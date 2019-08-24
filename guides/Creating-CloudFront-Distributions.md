@@ -1,12 +1,14 @@
 # Creating CloudFront Distributions
 
+![2 CloudFront Distributions](../images/cloudfront.png)
+
 ### Distributions
 A "distribution" is the collection of an origin location (your website) and edge locations. The content delivery network (CDN) makes clones of the origin content and places them at edge locations closer to the end user for faster delivery.
 
-### Origin Bucket
+### Origin bucket
 We will use a S3 bucket as the origin location for our content. S3 buckets can host static content, which has more cost, maintenance, and performance benefits than administering live servers. The distribution in front of this bucket will redirect insecure links to secure ones.
 
-### Standard Behaviors
+### Standard behaviors
 We will set up typical features for faster content delivery and standardize the domain behavior for search engine indexing:
   * Enable GZIP for network transfers
   * Make the apex domain `example.com` redirect to the fully qualified domain `www.example.com`
@@ -14,7 +16,7 @@ We will set up typical features for faster content delivery and standardize the 
 
 ---
 
-## Create a Distribution for the Origin Bucket
+## Create a distribution for the origin bucket
 1. Log into the AWS Management Console and search for [CloudFront](https://console.aws.amazon.com/cloudfront/home?#)
 1. "Create Distribution" button > Web delivery method > "Get Started" button
 1. Origin Domain Name: **DO NOT** choose your S3 bucket from the dropdown list
@@ -35,7 +37,7 @@ We will set up typical features for faster content delivery and standardize the 
     * If React Router can't handle loading `domain.com/index.html` without showing an error, then leave this value blank
 1. Click "Create Distribution" button
 
-## Customizing Error Pages
+## Customizing error pages
 One strategy for a simpler website is to redirect 404 and 500 errors to the main index page. This may not be desirable if you are trying to use analytics to find broken links.
 
 In this simpler scenario, we want to respond to broken links with a redirect to `index.html` and a 200 status code. We are trying to avoid 4xx responses that may be blocked by corporate firewalls and proxies, which tend to block 4xx and 5xx responses.
@@ -52,10 +54,10 @@ In this simpler scenario, we want to respond to broken links with a redirect to 
 
  It may take up to 15 minutes for CloudFront to clone your content to all geographic regions. The status will be "Deployed" when it's done.
 
-## Invalidating Old Content
+## Invalidating old content
 [View the guide](./Invalidating-Old-Data-on-Cloudfront.md) about deleting all copies of the content and forcing the distribution to pull from the source bucket again.
 
-## Deleting a Distribution
+## Deleting a distribution
 1. Enable the checkbox for your distribution > "Disable" button > "Yes, Disable" > "Close" button (can take up to 15 minutes)
 2. After the status is "Deployed" instead of "In Progress", enable the checkbox for your distribution > "Delete" button > "Yes, Delete" > "Close" button
 

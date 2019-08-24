@@ -1,3 +1,12 @@
+# Sections in this guide
+  - [ ] [Create a certificate tied to a custom domain]()
+  - [ ] [Use the certificate in CloudFront]()
+  - [ ] [Set DNS records with aliases to CloudFront]()
+  - [ ] [Verify that domain redirection is working]()
+  - [ ] [Resources]()
+
+---
+
 ## Create a certificate tied to a custom domain
 Note: certificate requests time out after 72 hours if they can't be validated.
 
@@ -15,6 +24,8 @@ Note: certificate requests time out after 72 hours if they can't be validated.
     * The final status for each domain should be "Issued"
 
 ## Use the certificate in CloudFront
+![Certificates and CloudFront](../images/cloudfront.png)
+
 Certificates with custom domains can only be used with CloudFront distributions, not with S3 buckets.
 
 The configuration below will follow the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md#introduction) of first having a core bucket for the full domain "`www.example.com`". Then a redirect bucket will handle forwarding requests for the apex domain "`example.com`" to the contents in the core bucket.
@@ -48,6 +59,8 @@ Two CloudFront distributions sit in front of both buckets for CDN functionality 
 It will take some time for your changes to propagate across all geographic regions, around 15 minutes.
 
 ## Set DNS records with aliases to CloudFront
+![DNS Records in Route 53](../images/route-53-and-certificate-manager.png)
+
 Before making the changes below, make sure the CloudFront distributions has a status of "Deployed".
 
 The Hosted Zone of `example.com.` was automatically created by Certificate Manager during the creation of the certificate. The Hosted Zone contains DNS records for both the `www.example.com` and `example.com` domains.

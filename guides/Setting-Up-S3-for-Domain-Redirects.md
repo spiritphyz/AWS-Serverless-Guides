@@ -1,4 +1,7 @@
 # Introduction
+
+![2 S3 buckets](../images/dual-s3-buckets.png)
+
 We will use 2 buckets to cover the needs for HTTPS security, automatic redirection to the canonical site, and higher search engine ranking. The recommended setup is:
   * **Core bucket** to store site content for the full domain
   * **Redirect bucket** will foward apex domain requests to the core bucket

@@ -1,7 +1,10 @@
 # AWS-Serverless-Guides
+
+![Infrastructure Diagram](../images/static-site-on-aws-with-labels.png)
+
 **Infrastructure guides for hosting secure, static sites on Amazon Web Services**
 
-These guides allow developers unfamiliar with the AWS platform to deploy a secure static site using static site generators like [GatsbyJS](https://www.gatsbyjs.org/). The site contents are served with auto-renewing HTTPS certificates, delivered on a CDN for faster response times, and will redirect to the canonical domain for better search engine ranking.
+These guides allow developers unfamiliar with the AWS platform to deploy a secure site using static site generators like [GatsbyJS](https://www.gatsbyjs.org/). The site contents are served with auto-renewing HTTPS certificates, delivered on a CDN for faster response times, and will redirect to the canonical domain for better search engine ranking.
 
 To learn the main configuration of each AWS service, you will be given specific instructions on where to customize options in the web-based Management Console. In the later guides, you will be shown how to accomplish many of the tasks through CLI-based terminal commands.
 
