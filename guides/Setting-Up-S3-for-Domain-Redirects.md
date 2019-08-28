@@ -36,10 +36,10 @@ The core bucket will host your static website content. Replace `example.com` bel
 1. "Configure options" screen
 ![S3 bucket options](../images/s3-bucket-configure-options.png)
     * Disable "Block all public access"
-        * Enable "Block public access through new ACLs"
-        * Enable "Block public access through any ACLs"
-        * Leave as disabled "Block new public bucket policies"
-        * Leave as disabled  "Block any public bucket policies"
+        * Enable "Block public access through _new_ ACLs"
+        * Enable "Block public access through _any_ ACLs"
+        * Leave as disabled "Block _new_ public bucket policies"
+        * Leave as disabled  "Block _any_ public bucket policies"
     * Press "Next" button
 1. "Review" screen > "Create bucket" button
 
@@ -83,6 +83,7 @@ This separate bucket will redirect the apex domain to the core bucket that conta
 1. "Set permissions" > leave all defaults intact > "Next" button > "Create bucket" button
 1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `redirect-example.com`
 1. "Properties" tab > Static website hosting:
+![Set up redirect to core bucket](../images/s3-redirect-bucket-options.png)
     * Enable "Redirect requests" option
     * Target bucket or domain: `example.com`
 1. Press "Save" button
