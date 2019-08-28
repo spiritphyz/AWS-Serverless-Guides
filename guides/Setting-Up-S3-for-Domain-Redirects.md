@@ -33,13 +33,14 @@ The core bucket will host your static website content. Replace `example.com` bel
     * Bucket name: `example.com`
     * Region: `US West (N. California)` or other region closest to your upload source
     * Click "Next" button 2 times (skip "Configure options")
-1. "Set permissions" screen
+1. "Configure options" screen
 ![S3 bucket options](../images/s3-bucket-configure-options.png)
-    * Leave as enabled "Block new public ACLs"
-    * Leave as enabled "Remove public access granted through public ACLs"
-    * Disable "Block new public bucket policies"
-    * Disable "Block public and cross-account access"
-    * Click "Next" button
+    * Disable "Block all public access"
+        * Enable "Block public access through new ACLs"
+        * Enable "Block public access through any ACLs"
+        * Leave as disabled "Block new public bucket policies"
+        * Leave as disabled  "Block any public bucket policies"
+    * Press "Next" button
 1. "Review" screen > "Create bucket" button
 
 **Allow public read permissions**
@@ -91,4 +92,6 @@ Although not required for a basic site, canonical tags can be added later to hel
 
 # Resources
   * https://www.netlify.com/blog/2017/02/28/to-www-or-not-www/
+test
   * https://moz.com/learn/seo/canonicalization
+
