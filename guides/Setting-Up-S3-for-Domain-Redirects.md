@@ -34,6 +34,7 @@ The core bucket will host your static website content. Replace `example.com` bel
     * Region: `US West (N. California)` or other region closest to your upload source
     * Click "Next" button 2 times (skip "Configure options")
 1. "Set permissions" screen
+![S3 bucket options](../images/s3-bucket-configure-options.png)
     * Leave as enabled "Block new public ACLs"
     * Leave as enabled "Remove public access granted through public ACLs"
     * Disable "Block new public bucket policies"
