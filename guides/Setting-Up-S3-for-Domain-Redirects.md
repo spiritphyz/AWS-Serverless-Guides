@@ -32,6 +32,7 @@ The core bucket will host your static website content. Replace `example.com` bel
 1. "Create Bucket" button
     * Bucket name: `example.com`
     * Region: `US West (N. California)` or other region closest to your upload source
+    * Click "Next" button 2 times (skip "Configure options")
 1. "Set permissions" screen
     * Leave as enabled "Block new public ACLs"
     * Leave as enabled "Remove public access granted through public ACLs"
@@ -44,6 +45,7 @@ The core bucket will host your static website content. Replace `example.com` bel
 1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
 1. "Permissions" tab > "Bucket Policy" tab
 1. Add a public read policy using the policy editor:
+    * Change `YOURBUCKETNAME` to `example.com`
 ```json
 {
   "Version": "2012-10-17",
@@ -66,7 +68,7 @@ The core bucket will host your static website content. Replace `example.com` bel
     * Index document: `index.html`
     * Error document: `error.html`
         * If React Router is handling 404s, you can use `index.html`
-1. Press "Create bucket" button
+1. Press "Save" button
 
 # Set up the redirect bucket
 This separate bucket will redirect the apex domain to the core bucket that contains the site content.
@@ -75,7 +77,8 @@ This separate bucket will redirect the apex domain to the core bucket that conta
 1. Press "Create bucket" button
     * Bucket name: `redirect-example.com`
     * Region: `US West (N. California)` or same as source bucket
-1. "Set permissions" > leave all defaults intact > "Create bucket" button
+1. Press "Next" button 2 times (skip "Configure options")
+1. "Set permissions" > leave all defaults intact > "Next" button > "Create bucket" button
 1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `redirect-example.com`
 1. "Properties" tab > Static website hosting:
     * Enable "Redirect requests" option
