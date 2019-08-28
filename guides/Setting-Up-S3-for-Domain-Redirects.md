@@ -93,6 +93,5 @@ Although not required for a basic site, canonical tags can be added later to hel
 
 # Resources
   * https://www.netlify.com/blog/2017/02/28/to-www-or-not-www/
-test
   * https://moz.com/learn/seo/canonicalization
 
