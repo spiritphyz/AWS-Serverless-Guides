@@ -46,22 +46,23 @@ The core bucket will host your static website content. Replace `example.com` bel
 **Allow public read permissions**
 1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
 1. "Permissions" tab > "Bucket Policy" tab
-1. Add a public read policy using the policy editor:
-    * Change `YOURBUCKETNAME` to `example.com`
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
+    ![Edit bucket name and add new policy](../images/s3-core-bucket-policy-editor.png)
+1. Add the public read policy below by pasting it into the policy editor:
+    * Replace the phrase `YOURBUCKETNAME` with `example.com`
+    ```json
     {
-      "Sid": "AddPerm",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::YOURBUCKETNAME/*"
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "AddPerm",
+          "Effect": "Allow",
+          "Principal": "*",
+          "Action": "s3:GetObject",
+          "Resource": "arn:aws:s3:::YOURBUCKETNAME/*"
+        }
+      ]
     }
-  ]
-}
-```
+    ```
 1. Press "Save" button
 
 **Enable static website hosting**
