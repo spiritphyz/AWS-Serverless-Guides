@@ -1,3 +1,17 @@
+# Sections in this guide
+  - [ ] [**Introduction**](./Setting-Up-S3-for-Domain-Redirects.md#introduction)
+    - [Use a fully qualified domain for the canonical site](./Setting-Up-S3-for-Domain-Redirects.md#use-a-fully-qualified-domain-for-the-canonical-site)
+    - [Avoid duplicate content](./Setting-Up-S3-for-Domain-Redirects.md#avoid-duplicate-content)
+  - [ ] [**Set up the core bucket**](./Setting-Up-S3-for-Domain-Redirects.md#set-up-the-core-bucket)
+    - [Create a new bucket](./Setting-Up-S3-for-Domain-Redirects.md#create-a-new-bucket)
+    - [Allow public read permissions](./Setting-Up-S3-for-Domain-Redirects.md#allow-public-read-permissions)
+    - [Enable static website hosting](./Setting-Up-S3-for-Domain-Redirects.md#enable-static-website-hosting)
+  - [ ] [**Set up the redirect bucket**](./Setting-Up-S3-for-Domain-Redirects.md#set-up-the-redirect-bucket)
+  - [ ] [**Canonical tags and path redirects**](./Setting-Up-S3-for-Domain-Redirects.md#canonical-tags-and-path-redirects)
+  - [ ] [**Resources**](./Setting-Up-S3-for-Domain-Redirects.md#resources)
+
+---
+
 # Introduction
 
 ![2 S3 buckets](../images/dual-s3-buckets.png)
@@ -27,7 +41,7 @@ We will use the full domain `www.example.com` for the core bucket and create a s
 # Set up the core bucket
 The core bucket will host your static website content. Replace `example.com` below with the domain of your website.
 
-**Create a new bucket**
+## Create a new bucket
 1. Log into the management console, [search for S3](https://console.aws.amazon.com/s3/home)
 1. "Create Bucket" button
     * Bucket name: `example.com`
@@ -43,7 +57,7 @@ The core bucket will host your static website content. Replace `example.com` bel
     * Press "Next" button
 1. "Review" screen > "Create bucket" button
 
-**Allow public read permissions**
+## Allow public read permissions
 1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
 1. "Permissions" tab > "Bucket Policy" tab
     ![Edit bucket name and add new policy](../images/s3-core-bucket-policy-editor.png)
@@ -65,13 +79,15 @@ The core bucket will host your static website content. Replace `example.com` bel
     ```
 1. Press "Save" button
 
-**Enable static website hosting**
+## Enable static website hosting
 1. Go back to the [main bucket list](https://console.aws.amazon.com/s3/home), choose `example.com`
 1. "Properties" tab > "Static Website Hosting" > Enable option for "Use this bucket to host a website"
     * Index document: `index.html`
     * Error document: `error.html`
         * If React Router is handling 404s, you can use `index.html`
 1. Press "Save" button
+
+---
 
 # Set up the redirect bucket
 This separate bucket will redirect the apex domain to the core bucket that contains the site content.
@@ -89,8 +105,12 @@ This separate bucket will redirect the apex domain to the core bucket that conta
     * Target bucket or domain: `example.com`
 1. Press "Save" button
 
+---
+
 # Canonical tags and path redirects
 Although not required for a basic site, canonical tags can be added later to help boost search engine rankings. If you need Apache-style rewrite rules, S3 has a unique XML-based format. Both of these topics are covered in a [separate guide](./Canonical-Tags-and-URL-Rewrites.md).
+
+---
 
 # Resources
   * https://www.netlify.com/blog/2017/02/28/to-www-or-not-www/
