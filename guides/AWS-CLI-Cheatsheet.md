@@ -6,19 +6,13 @@ Listed below are example CLI commands you can use to "copy, paste, configure, th
  * IAM identities are configured
  * IAM keys are in your path
 
+## Index of commands in this guide
+ - [ ] [**Create a new public bucket**](./AWS-CLI-Cheatsheet.md#create-a-new-public-bucket)
+   * [Set public permissions, set region](./AWS-CLI-Cheatsheet.md#1-set-public-permissions-set-region)
+
 ---
 
 # Create a new public bucket
-#### Notes on Static Website Hosting links
-For S3 buckets, the Static Website Hosting endpoint has a different URL than the API endpoint (the one that is listed for each S3 object). The SWH endpoint has a subdomain pattern similar to  **s3-website-region**, and the pattern is preceded by the bucket name.
-  * **Static Website Hosting endpoint** (HTTP)
-    * http://example.com.s3-website-us-west-1.amazonaws.com/
-  * **API endpoint for individual S3 object** (HTTPS)
-    * https://s3-us-west-1.amazonaws.com/example.com/index.html
-
-Note that SWH endpoints are not secure! They can be secured by placing a CloudFront distribution in front of them. In a very confusing manner, the API endpoint for an individual S3 object has a secure URL even though simultaneously, the default SWH endpoint for the bucket is insecure.
-
-Let's create a new public bucket using the CLI with the steps below.
 
 ### 1. Set public permissions, set region
   * You can't use `--region` by itself for regions not in `us-east-1`; you also need the `LocationConstraint` option.

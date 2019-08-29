@@ -22,4 +22,5 @@ To learn the main configuration of each AWS service, you will be given specific 
 
 **Additional Guides**
   * [Canonical Tags and URL Rewrites](./guides/Canonical-Tags-and-URL-Rewrites.md)
+  * [Static Website Hosting Links](./guides/Static-Website-Hosting-Endpoints-vs-API-Path-Endpoints.md)
 
