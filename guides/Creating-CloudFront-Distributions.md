@@ -55,13 +55,13 @@ In this simpler scenario, we want to respond to broken links with a redirect to 
 
 1. Click on the ID on the newly created distribution (origin should match your bucket)
 2. "Error Pages" tab > "Create Custom Error Response" button
-    * HTTP Error Code: 403: Forbidden
-    * Customize Error Response: Yes
-      * Response Page Path: /index.html
-      * HTTP Response Code: "200 OK" (Not 403)
-    * Repeat steps "a" and "b" above for "404: Not Found"
-      * HTTP Response Code: "200 OK" (Not 404)
-    * Save settings with "Yes, Edit" button
+   * HTTP Error Code: 403: Forbidden
+   * Customize Error Response: Yes
+     * Response Page Path: /index.html
+     * HTTP Response Code: "200 OK" (Not 403)
+   * Repeat steps above for "404: Not Found"
+     * HTTP Response Code: "200 OK" (Not 404)
+   * Save settings with "Yes, Edit" button
 
  It may take up to 15 minutes for CloudFront to clone your content to all geographic regions. The status will be "Deployed" when it's done.
 
