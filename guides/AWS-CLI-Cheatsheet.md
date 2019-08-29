@@ -99,7 +99,9 @@ aws s3 rm s3://example.com --recursive
 aws s3api delete-bucket --bucket example.com --region us-west-1
 ```
 
-## Resources
+---
+
+# Resources
 **S3 documentation**
   * https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html
   * https://docs.aws.amazon.com/cli/latest/reference/s3api/delete-bucket.html
