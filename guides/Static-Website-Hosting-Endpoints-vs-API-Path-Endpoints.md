@@ -1,4 +1,6 @@
 # Notes on Static Website Hosting links
+![Where to find Static Website Hosting endpoint in Management Console](../images/static-website-hosting-endpoint-location.png)
+
 For S3 buckets, the Static Website Hosting endpoint has a different URL than the API endpoint (the one that is listed for each S3 object). The SWH endpoint has a subdomain pattern similar to  **s3-website-region**, and the pattern is preceded by the bucket name.
   * **Static Website Hosting endpoint** (HTTP)
     * http://example.com.s3-website-us-west-1.amazonaws.com/
