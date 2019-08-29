@@ -3,12 +3,19 @@ Listed below are example CLI commands you can use to "copy, paste, configure, th
 
 ## Requirements
  * [CLI tools are installed](./Setting-Up-AWS-CLI-Tools.md)
- * IAM identities are configured
- * IAM keys are in your path
+ * [IAM users and groups are configured](./Setting-Up-IAM-Identities-for-CLI.md#create-a-group-with-limited-admin-privileges)
+ * [Stored credentials are configured](./Setting-Up-IAM-Identities-for-CLI.md#setting-up-stored-credentials-with-cli)
 
-## Index of commands in this guide
+## Index of CLI commands in this guide
  - [ ] [**Create a new public bucket**](./AWS-CLI-Cheatsheet.md#create-a-new-public-bucket)
    * [Set public permissions, set region](./AWS-CLI-Cheatsheet.md#1-set-public-permissions-set-region)
+   * [Enable Static Website Hosting, set defaults for the Index and Error objects](./AWS-CLI-Cheatsheet.md#2-enable-static-website-hosting-set-defaults-for-the-index-and-error-objects)
+   * [Get public-read policy and save it to home folder](./AWS-CLI-Cheatsheet.md#3-get-public-read-policy-and-save-it-to-home-folder)
+   * [Customize the policy, change bucket name to 'example.com'](./AWS-CLI-Cheatsheet.md#4-customize-the-policy-change-bucket-name-to-examplecom)
+   * [Add bucket policy to S3](./AWS-CLI-Cheatsheet.md#5-add-bucket-policy-to-s3)
+ - [ ] [**Sync to S3**](./AWS-CLI-Cheatsheet.md#sync-to-s3)
+ - [ ] [**Create a CloudFront invalidation**](./AWS-CLI-Cheatsheet.md#create-a-cloudfront-invalidation)
+ - [ ] [**Delete a bucket**](./AWS-CLI-Cheatsheet.md#delete-a-bucket)
 
 ---
 
@@ -39,7 +46,7 @@ aws s3 website s3://example.com --index-document index.html --error-document ind
 curl -o ~/aws-policies/s3-bucket-public-read.json --create-dirs https://raw.githubusercontent.com/spiritphyz/aws-policies/master/s3/s3-bucket-public-read.json
 ```
 
-### 4. Customize the policy the bucket name to 'example.com'
+### 4. Customize the policy, change bucket name to 'example.com'
   * We will duplicate the original master policy as a new file named `s3.json`
   * In the `sed` command below, customize the `example.com` bucket name:
 ```bash
