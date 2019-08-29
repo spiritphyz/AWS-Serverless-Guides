@@ -31,7 +31,7 @@ To accomodate the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md
 1. Log into the AWS Management Console and search for [CloudFront](https://console.aws.amazon.com/cloudfront/home?#)
 1. "Create Distribution" button > Web delivery method > "Get Started" button
 1. Origin Domain Name: **DO NOT** choose your S3 bucket from the dropdown list
-    * Put in the [Static Website Hosting](./AWS-CLI-Cheatsheet.md#notes-on-static-website-hosting-links) endpoint.
+    * Put in the [Static Website Hosting](./Static-Website-Hosting-Endpoints-vs-API-Path-Endpoints.md) endpoint.
     * The endpoint will have `-website-` in its name, like:
       * `example.com.s3-website-us-west-1.amazonaws.com`
 1. Origin ID: will automatically fill in if you pick your S3 bucket
