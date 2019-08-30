@@ -60,10 +60,10 @@ Two CloudFront distributions sit in front of both buckets for CDN functionality 
 1. Alternate Domain Names (CNAMEs) > add domain names below and separate them by new lines
     * `www.example.com`
 1. "Yes, Edit" button
-1. Check the default cache behavior
+1. Change the default cache behavior
     * "Behaviors" tab > Select checkbox for "Default (*)" > "Edit" button > Viewer Protocol Policy
-    * Leave as "**HTTP and HTTPS**" so we let users go directly to the HTTPS version and not produce an extra redirect
-    * If there are changes, then press the "Yes, Edit" button
+    * Change to "**Redirect HTTP to HTTPS**"
+    * "Yes, Edit" button
 
 ### Use the certificate for the apex domain
 1. Go back to the main [CloudFront](https://console.aws.amazon.com/cloudfront/home?#) page
@@ -72,10 +72,10 @@ Two CloudFront distributions sit in front of both buckets for CDN functionality 
 1. Alternate Domain Names (CNAMEs) > add domain names below and separate them by new lines
     * `example.com`
 1. "Yes, Edit" button
-1. Change the default cache behavior
+1. Check the default cache behavior
     * "Behaviors" tab > Select checkbox for "Default (*)" > "Edit" button > Viewer Protocol Policy
-    * **Redirect HTTP to HTTPS**
-    * "Yes, Edit" button
+    * Leave as **HTTP and HTTPS** so we avoid an extra redirect
+    * If there are changes, then press "Yes, Edit" button
 
 It will take some time for your changes to propagate across all geographic regions, around 15 minutes.
 

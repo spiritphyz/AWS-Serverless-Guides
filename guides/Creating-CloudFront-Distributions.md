@@ -45,7 +45,7 @@ To accomodate the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md
 1. Price Class: "Use Only U.S., Canada and Europe"
     * If your services aren't available outside the U.S., then you should pick this lower price class
 1. Default Root Object: `index.html`
-    * If React Router can't handle loading `domain.com/index.html` without showing an error, then leave this value blank
+    * If React Router handles loading `domain.com/`, then leave this value blank
 1. Click "Create Distribution" button
 
 ![Deployed Distributions](../images/cloudfront-distributions-deployed.png)
