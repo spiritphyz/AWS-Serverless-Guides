@@ -36,7 +36,7 @@ To accomodate the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md
       * `example.com.s3-website-us-west-1.amazonaws.com`
 1. Origin ID: will automatically fill in if you pick your S3 bucket
 1. Enable HTTPS
-    * Viewer Protocol Policy: Redirect HTTP to HTTPS
+    * Viewer Protocol Policy: HTTP and HTTPS
 1. Set Minimum TTL to be 1 hour before CloudFront fetches from the origin
     * Object Caching: Customize
     * Minimum TTL: 3600
