@@ -48,22 +48,26 @@ To accomodate the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md
     * If React Router can't handle loading `domain.com/index.html` without showing an error, then leave this value blank
 1. Click "Create Distribution" button
 
+![Deployed Distributions](../images/cloudfront-distributions-deployed.png)
+
 It may take up to 15 minutes for CloudFront to clone your content to all geographic regions. The status will be "Deployed" when it's done.
 
 ## Customizing error pages
 One strategy for a simpler website is to redirect 404 and 500 errors to the main index page. This may not be desirable if you use analytics data to find broken links.
 
-In this simpler strategy, we will respond to respond to broken links with a redirect to `index.html` and a 200 status code. We are trying to avoid being blocked by corporate firewalls and proxies, which may block 4xx and 5xx responses.
+In this simpler strategy, we will respond to respond to broken links with a redirect to `index.html` and a 200 status code. We are trying to avoid being blocked by corporate firewalls and proxies, which may block 4xx and 5xx responses. We only need to customize the error pages for the distribution in front of the core bucket, not the redirect bucket.
 
-1. Click on the ID on the newly created distribution (origin should match your bucket)
+1. Click on the ID of the newly created distribution (origin should match your bucket's Static Website Hosting endpoint)
 2. "Error Pages" tab > "Create Custom Error Response" button
    * HTTP Error Code: 403: Forbidden
    * Customize Error Response: Yes
-     * Response Page Path: /index.html
+     * Response Page Path: `/index.html`
      * HTTP Response Code: "200 OK" (Not 403)
-   * Repeat steps above for "404: Not Found"
-     * HTTP Response Code: "200 OK" (Not 404)
-   * Save settings with "Yes, Edit" button
+     * Press the 'Create' button
+3. Repeat step 2 above for Error Code: "404: Not Found"
+   * HTTP Response Code: "200 OK" (Not 404)
+
+Again, it may take up to 15 minutes for your changes to spread across the CloudFront distribution.
 
 ## Invalidating old content
 [View the guide](./Invalidating-Old-Data-on-Cloudfront.md) about deleting all copies of the content and forcing the distribution to pull from the source bucket again.
