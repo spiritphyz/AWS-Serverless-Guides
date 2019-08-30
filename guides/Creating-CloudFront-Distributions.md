@@ -31,7 +31,7 @@ To accomodate the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md
 1. Log into the AWS Management Console and search for [CloudFront](https://console.aws.amazon.com/cloudfront/home?#)
 1. "Create Distribution" button > Web delivery method > "Get Started" button
 1. Origin Domain Name: **DO NOT** choose your S3 bucket from the dropdown list
-    * Put in the [Static Website Hosting](./AWS-CLI-Cheatsheet.md#notes-on-static-website-hosting-links) endpoint.
+    * Put in the [Static Website Hosting](./Static-Website-Hosting-Endpoints-vs-API-Path-Endpoints.md) endpoint.
     * The endpoint will have `-website-` in its name, like:
       * `example.com.s3-website-us-west-1.amazonaws.com`
 1. Origin ID: will automatically fill in if you pick your S3 bucket
@@ -55,13 +55,13 @@ In this simpler scenario, we want to respond to broken links with a redirect to 
 
 1. Click on the ID on the newly created distribution (origin should match your bucket)
 2. "Error Pages" tab > "Create Custom Error Response" button
-    * HTTP Error Code: 403: Forbidden
-    * Customize Error Response: Yes
-      * Response Page Path: /index.html
-      * HTTP Response Code: "200 OK" (Not 403)
-    * Repeat steps "a" and "b" above for "404: Not Found"
-      * HTTP Response Code: "200 OK" (Not 404)
-    * Save settings with "Yes, Edit" button
+   * HTTP Error Code: 403: Forbidden
+   * Customize Error Response: Yes
+     * Response Page Path: /index.html
+     * HTTP Response Code: "200 OK" (Not 403)
+   * Repeat steps above for "404: Not Found"
+     * HTTP Response Code: "200 OK" (Not 404)
+   * Save settings with "Yes, Edit" button
 
  It may take up to 15 minutes for CloudFront to clone your content to all geographic regions. The status will be "Deployed" when it's done.
 
