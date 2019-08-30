@@ -94,31 +94,31 @@ Before making the changes below, make sure the CloudFront distributions has a st
 ### Create full domain records
 1. Log into the AWS Management Console, search for [Route 53](https://console.aws.amazon.com/route53/home?#)
 1. "Hosted zones" on left sidebar > [example.com.]() > "Create Record Set" button > change settings on right sidebar
-    * Name: `www`.example.com.
+    * Name: `www`**.example.com.**
     * Type: A - IPv4 address
     * Alias: Yes
     * Alias Target: Dropdown list should show your CloudFront distribution for the full domain, so pick it
-    * "Save Record Set" button
+    * "Create" button
 1. "Create Record Set" button > change settings on right sidebar
-    * Name: `www`.example.com.
+    * Name: `www`**.example.com.**
     * Type: AAAA - IPv6 address
     * Alias: Yes
     * Alias Target: Dropdown list should show your CloudFront distribution for the full domain, so pick it
+    * "Create" button
 
 ### Create apex domain records
-1. Go back to the main [Route 53](https://console.aws.amazon.com/route53/home?#) page
-1. "Hosted zones" on left sidebar > [example.com.]() > "Create Record Set" button > change settings on right sidebar
-right sidebar
-    * Name: example.com. (leave subdomain as blank)
+1. "Create Record Set" button > change settings on right sidebar
+    * Name: **example.com.** (leave subdomain as blank)
     * Type: A - IPv4 address
     * Alias: Yes
     * Alias Target: Dropdown list should show your CloudFront distribution for the apex domain, so pick it
-    * "Save Record Set" button
+    * "Create" button
 1. "Create Record Set" button > change settings on right sidebar
     * Name: example.com. (leave subdomain as blank)
     * Type: AAAA - IPv6 address
     * Alias: Yes
     * Alias Target: Dropdown list should show your CloudFront distribution for the full domain, so pick it
+    * "Create" button
 
 ## Verify that domain redirection is working
 In a browser, make sure these domain requests are being redirected:
