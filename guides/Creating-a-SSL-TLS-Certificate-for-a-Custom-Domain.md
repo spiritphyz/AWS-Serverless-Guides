@@ -49,7 +49,7 @@ It may take up to 30 minutes for the changes to propagate and for AWS to validat
 
 Certificates with custom domains can only be used with CloudFront distributions, not with S3 buckets.
 
-The configuration below will follow the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md#introduction) of first having a core bucket for the full domain "`www.example.com`". Then a redirect bucket will handle forwarding requests for the apex domain "`example.com`" to the contents in the core bucket.
+The configuration below will follow the [recommended approach](./Setting-Up-S3-for-Domain-Redirects.md#introduction) of first having a core bucket for the full domain "`www.example.com`". Then a redirect bucket will handle forwarding requests for the apex domain "`example.com`" to the full domain.
 
 Two CloudFront distributions sit in front of both buckets for CDN functionality and will be used as the targets for the DNS records.
 
