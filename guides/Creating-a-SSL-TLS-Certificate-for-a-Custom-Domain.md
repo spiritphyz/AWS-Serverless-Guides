@@ -126,7 +126,7 @@ In a browser, make sure these domain requests are being redirected:
   * http://example.com redirects to https://www.example.com
   * https://example.com redirects to https://www.example.com
 
-It may take some time for the DNS changes to be seen by your ISP and local company network.
+It may take some time for the DNS changes to be seen by your ISP and local company network. It might take an hour before you can see the correct results for all the above verification links. Try connecting to a server in another region and using `curl -I http://example.com` to see if the DNS changes can be seen faster in a separate network.
 
 # Resources
   * https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html
