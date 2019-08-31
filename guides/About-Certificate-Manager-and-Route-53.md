@@ -3,7 +3,7 @@
 ![DNS and Certificates](../images/route-53-and-certificate-manager.png)
 
 #### Managed certificate renewal
-ACM creates free HTTPS certificates that are continuously renewed by Amazon. These managed renewals are more reliable than the common alternative certificates from "Let's Encrypt" which require cron jobs for certificate renewal. These cron jobs can unexpectedly fail when rare events aren't fully covered in the timing configuration.
+ACM creates free HTTPS certificates that are continuously renewed by Amazon. These managed renewals are more reliable than the common alternative certificates from "Let's Encrypt" which require cron jobs for certificate renewal. Cron jobs can unexpectedly fail when rare events aren't fully covered in the timing configuration.
 
 #### More secure site traffic, better SEO
 TLS is "[Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)" and the older SSL protocol is "Secure Sockets Layer". A TLS-enabled site will encrypt all network traffic in a HTTPS connection, preventing attackers from inspecting the traffic or modifying it while in transit. All browsers will show a prominent "Not Secure" label next to the website if no TLS certificate is installed. TLS-enabled sites also score higher in Google's search rankings.

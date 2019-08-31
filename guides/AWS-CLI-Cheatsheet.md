@@ -70,7 +70,7 @@ aws s3 sync --delete --exclude '*.DS_Store' public/ s3://example.com
 
 # Sync to S3 using alternate profile.
 # See the guide "Setting-Up-IAM-Identities-for-CLI.md" for setup.
-aws s3 --profile analytics sync --delete public/ s3://example.com
+aws s3 --profile qateam sync --delete public/ s3://example.com
 ```
 
 ---

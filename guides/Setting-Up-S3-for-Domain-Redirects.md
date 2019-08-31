@@ -112,6 +112,11 @@ Although not required for a basic site, canonical tags can be added later to hel
 
 ---
 
+# Create, delete, and deploy to buckets in the CLI
+You can [create public buckets](./AWS-CLI-Cheatsheet.md#create-a-new-public-bucket), [delete buckets](./AWS-CLI-Cheatsheet.md#delete-a-bucket), and [deploy new content](./AWS-CLI-Cheatsheet.md#sync-to-s3) using the terminal utilities.
+
+---
+
 # Resources
   * https://www.netlify.com/blog/2017/02/28/to-www-or-not-www/
   * https://moz.com/learn/seo/canonicalization
