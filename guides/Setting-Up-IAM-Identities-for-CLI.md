@@ -64,7 +64,7 @@ output=json
 You can edit the above 2 files to configure multiple keys. For example, the S3 sync command below contains a switch to a separate profile:
 ```bash
 # Sync static site to S3 using alternate profile
-aws s3 --profile analytics sync --delete public/ s3://example.com
+aws s3 --profile qateam sync --delete public/ s3://example.com
 ```
 
 **~/.aws/credentials**
@@ -73,7 +73,7 @@ aws s3 --profile analytics sync --delete public/ s3://example.com
 aws_access_key_id=AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
-[analytics]
+[qateam]
 aws_access_key_id=DKDIOEOQOSFX7EXAMPLE
 aws_secret_access_key=adIELweXUtnFEMIsKdksoEQKe?ebPYEXAMPLEKEY
 ```
@@ -84,7 +84,7 @@ aws_secret_access_key=adIELweXUtnFEMIsKdksoEQKe?ebPYEXAMPLEKEY
 region=us-west-1
 output=json
 
-[analytics]
+[qateam]
 region=us-east-1
 output=json
 ```
