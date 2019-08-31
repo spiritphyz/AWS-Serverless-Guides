@@ -8,6 +8,7 @@
     - [Enable static website hosting](./Setting-Up-S3-for-Domain-Redirects.md#enable-static-website-hosting)
   - [ ] [**Set up the redirect bucket**](./Setting-Up-S3-for-Domain-Redirects.md#set-up-the-redirect-bucket)
   - [ ] [**Canonical tags and path redirects**](./Setting-Up-S3-for-Domain-Redirects.md#canonical-tags-and-path-redirects)
+  - [ ] [**Create, delete, and deploy to buckets in the CLI**](./Setting-Up-S3-for-Domain-Redirects.md#create-delete-and-deploy-to-buckets-in-the-cli)
   - [ ] [**Resources**](./Setting-Up-S3-for-Domain-Redirects.md#resources)
 
 ---
