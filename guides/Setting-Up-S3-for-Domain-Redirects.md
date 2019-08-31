@@ -102,7 +102,7 @@ This separate bucket will redirect the apex domain to the core bucket that conta
 1. "Properties" tab > Static website hosting:
 ![Set up redirect to core bucket](../images/s3-redirect-bucket-options.png)
     * Enable "Redirect requests" option
-    * Target bucket or domain: `www.example.com`
+    * Target bucket or **domain**: `www.example.com`
 1. Press "Save" button
 
 ---
