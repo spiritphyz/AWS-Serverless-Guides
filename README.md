@@ -11,7 +11,6 @@ To learn the main configuration of each AWS service, you will be given specific 
 **Customizing Services in the Management Console**
   * [Setting up S3 for Domain Redirects](./guides/Setting-Up-S3-for-Domain-Redirects.md)
   * [Creating CloudFront Distributions](./guides/Creating-CloudFront-Distributions.md)
-  * [Invalidating Old Data on CloudFront](./guides/Invalidating-Old-Data-on-Cloudfront.md)
   * [Managed Certificates and DNS Services](./guides/About-Certificate-Manager-and-Route-53.md)
   * [Creating a SSL/TLS Certificate for a Custom Domain](./guides/Creating-a-SSL-TLS-Certificate-for-a-Custom-Domain.md)
 
@@ -22,5 +21,6 @@ To learn the main configuration of each AWS service, you will be given specific 
 
 **Additional Guides**
   * [Canonical Tags and URL Rewrites](./guides/Canonical-Tags-and-URL-Rewrites.md)
+  * [Invalidating Old Data on CloudFront](./guides/Invalidating-Old-Data-on-Cloudfront.md)
   * [Static Website Hosting Links](./guides/Static-Website-Hosting-Endpoints-vs-API-Path-Endpoints.md)
 
