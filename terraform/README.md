@@ -11,6 +11,10 @@
     ```bash
     TF_CURR_VER="$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')"
     TF_DL_LINK="$(echo \"https://releases.hashicorp.com/terraform/${TF_CURR_VER}/terraform_${TF_CURR_VER}_linux_amd64.zip\")"
+    echo "${TF_DL_LINK}" | xargs curl -O}
+    unzip $(echo "terraform_${TF_CURR_VER}_linux_amd64.zip")
+    sudo mv terraform /usr/local/bin/
+    terraform -v # you should see the version number listed
     ```
     * Find latest macOS version and install it
 echo "https://releases.hashicorp.com/terraform/$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')/terraform_$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')_darwin_amd64.zip"
