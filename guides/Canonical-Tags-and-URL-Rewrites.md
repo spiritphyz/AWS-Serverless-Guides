@@ -1,8 +1,7 @@
 # Add canonical tags to your pages
-Every page of your site should have a `<link>` tag that represents the "master copy" of the page. The hyperlink should have the fully qualified domain. The canonical version will appear in search engine results and help the crawlers avoid treating URL variations as separate pages of duplicate content.
+Every page of your site should have a `<link>` tag that represents the "official public link" of the page. The link should have the fully qualified domain. This canonical link will appear in search engine results and help the crawlers avoid treating URL variations as separate pages of duplicate content.
 #### URL variations that shouldn't be indexed
-  * http://www.example.com
-  * https://www.example.com
+  * http://www.example.com (links to the insecure HTTP protocol)
   * https://www.example.com/index.html
   * https://www.example.com/index.html?step=2
 
