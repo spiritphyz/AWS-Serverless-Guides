@@ -6,7 +6,7 @@
 
 These guides allow developers unfamiliar with the AWS platform to deploy a secure site using static site generators like [GatsbyJS](https://www.gatsbyjs.org/). The site contents are served with auto-renewing HTTPS certificates, delivered on a CDN for faster response times, and will redirect to the canonical domain for better search engine ranking.
 
-To learn the main configuration of each AWS service, you will be given specific instructions on where to customize options in the web-based Management Console. In the later guides, you will be shown how to accomplish many of the tasks through CLI-based terminal commands.
+To learn the main configuration of each AWS service, you will be given specific instructions on where to customize options in the web-based Management Console. In the later guides, you will be shown how to accomplish many of the tasks through CLI-based terminal commands, which are useful in automated scripts.
 
 **Customizing Services in the Management Console**
   * [Setting up S3 for Domain Redirects](./guides/Setting-Up-S3-for-Domain-Redirects.md)
